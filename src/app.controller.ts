@@ -11,7 +11,7 @@ export class AppController {
   // }
 
   @Get()
-  @Render('index')
+  @Render('home')
   root() {
     return {
       title: 'Welcome to Jurassic Park!',
@@ -19,17 +19,8 @@ export class AppController {
     };
   }
 
-  @Get('animals')
-  @Render('index')
-  animals() {
-    return {
-      title: 'JP - Animal Management',
-      hero_text: 'Animal Management'
-    };
-
-  }
   @Get('personnel')
-  @Render('index')
+  @Render('personnel')
   personnel() {
     return {
       title: 'JP - Personnel Management',

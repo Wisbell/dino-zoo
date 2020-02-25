@@ -24,6 +24,8 @@ $primary-invert: $pink-invert;
 // 4. Import the rest of Bulma
 */
 
+$input-placeholder-color: black;
+
 @import "./nav.custom.scss";
 @import "./slider.custom.scss";
 @import "../node_modules/bulma/bulma";

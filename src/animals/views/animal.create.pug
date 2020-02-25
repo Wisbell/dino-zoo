@@ -1,0 +1,56 @@
+extends ../../views/layout.pug
+
+block content
+  |<form onsubmit="event.preventDefault();">
+  |<div class="field">
+  |  <label class="label has-text-white">Name</label>
+  |  <div class="control">
+  |    <input class="input" type="text" placeholder="Name of Dinosaur">
+  |  </div>
+  |</div>
+
+  |<div class="field">
+  |  <label class="label has-text-white">Species</label>
+  |  <div class="control">
+  |    <input class="input" type="text" placeholder="Species of Dinosaur">
+  |  </div>
+  |</div>
+
+  |<div class="field">
+  |  <label class="label has-text-white">Gender</label>
+  |  <div class="control">
+  |    <div class="select">
+  |      <select>
+  |        <option>Male</option>
+  |        <option>Female</option>
+  |      </select>
+  |    </div>
+  |  </div>
+  |</div>
+
+  |<div class="field">
+  |  <label class="label has-text-white">Age</label>
+  |  <div class="control">
+  |    <input class="input" type="text" placeholder="Age">
+  |  </div>
+  |</div>
+
+  |<div class="field">
+  |  <label class="label has-text-white">Number of Kills</label>
+  |  <div class="control">
+  |    <input class="input" type="text" placeholder="Number of Kills?">
+  |  </div>
+  |</div>
+
+  |<div class="field is-grouped">
+  |  <div class="control">
+  |    <button class="button is-link" onclick="createAnimal()">Submit</button>
+  |  </div>
+  |  <div class="control">
+  |    <button class="button is-link is-light" onclick="goTo('/animals')">Cancel</button>
+  |  </div>
+  |</div>
+  |</form>
+
+block scripts
+  script(type='text/javascript' src='/js/animal.create.js')
