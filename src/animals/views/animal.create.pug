@@ -1,56 +1,41 @@
 extends ../../views/layout.pug
 
 block content
-  |<form onsubmit="event.preventDefault();">
-  |<div class="field">
-  |  <label class="label has-text-white">Name</label>
-  |  <div class="control">
-  |    <input class="input" type="text" placeholder="Name of Dinosaur">
-  |  </div>
-  |</div>
 
-  |<div class="field">
-  |  <label class="label has-text-white">Species</label>
-  |  <div class="control">
-  |    <input class="input" type="text" placeholder="Species of Dinosaur">
-  |  </div>
-  |</div>
+  .section
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          form(onsubmit='event.preventDefault();')
+            .field
+              label.label.has-text-white Name
+              .control
+                input.input(type='text' name='name' placeholder='Name of Dinosaur')
+            .field
+              label.label.has-text-white Species
+              .control
+                input.input(type='text' name='species' placeholder='Species of Dinosaur')
+            .field
+              label.label.has-text-white Gender
+              .control
+                .select
+                  select#gender
+                    option(value='male') Male
+                    option(value='female') Female
+            .field
+              label.label.has-text-white Age
+              .control
+                input.input(type='text' name='age' placeholder='Age')
+            .field
+              label.label.has-text-white Number of Kills
+              .control
+                input.input(type='text' name='numberOfKills' placeholder='Number of Kills?')
+            .field.is-grouped
+              .control
+                button.button.is-link(onclick='createAnimal()') Submit
+              .control
+                button.button.is-link.is-light(onclick="goTo('/animals')") Cancel
 
-  |<div class="field">
-  |  <label class="label has-text-white">Gender</label>
-  |  <div class="control">
-  |    <div class="select">
-  |      <select>
-  |        <option>Male</option>
-  |        <option>Female</option>
-  |      </select>
-  |    </div>
-  |  </div>
-  |</div>
-
-  |<div class="field">
-  |  <label class="label has-text-white">Age</label>
-  |  <div class="control">
-  |    <input class="input" type="text" placeholder="Age">
-  |  </div>
-  |</div>
-
-  |<div class="field">
-  |  <label class="label has-text-white">Number of Kills</label>
-  |  <div class="control">
-  |    <input class="input" type="text" placeholder="Number of Kills?">
-  |  </div>
-  |</div>
-
-  |<div class="field is-grouped">
-  |  <div class="control">
-  |    <button class="button is-link" onclick="createAnimal()">Submit</button>
-  |  </div>
-  |  <div class="control">
-  |    <button class="button is-link is-light" onclick="goTo('/animals')">Cancel</button>
-  |  </div>
-  |</div>
-  |</form>
 
 block scripts
   script(type='text/javascript' src='/js/animal.create.js')

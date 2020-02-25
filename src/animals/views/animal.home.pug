@@ -1,4 +1,18 @@
 extends ../../views/layout.pug
 
 block content
-  h1= 'Get all animals'
+  .section
+    .content
+      h1.has-text-white.has-text-centered Manage Animals
+
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          .buttons.is-centered
+            a.button.is-medium.is-danger(href='/animals/create') Add Dino
+
+    .content
+      h1.has-text-white dinos
+
+block scripts
+  script(type='text/javascript' src='/js/animal.home.js')

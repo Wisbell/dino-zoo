@@ -1,11 +1,17 @@
-import { Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Param, Post, Put, Delete, Body } from '@nestjs/common';
+import { CreateAnimalDto } from './create-animal.dto';
+import { AnimalsService } from './animals.service';
+import { Animal } from './animal.entity';
 
 @Controller('api/animals')
 export class AnimalsApiController {
+  constructor(
+    private animalService: AnimalsService
+  ){}
+
   @Get()
-  // findAll(@Query() query: ListAllEntities) {
-  findAll() {
-    return `This action returns all cats (limit: items)`;
+  async getAll(): Promise<Animal[]>{
+    return await this.animalService.getAll();
   }
 
   @Get(':id')
@@ -14,9 +20,11 @@ export class AnimalsApiController {
   }
 
   @Post()
-  // create(@Body() createCatDto: CreateCatDto) {
-  create() {
-    return 'This action adds a new cat';
+  createAnimal(@Body() createAnimalDto: CreateAnimalDto) {
+    console.log('Controller createAnimalDto', createAnimalDto);
+    return this.animalService.create(
+      CreateAnimalDto.toAnimal(createAnimalDto)
+    );
   }
 
   @Put(':id')

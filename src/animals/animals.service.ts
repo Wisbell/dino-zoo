@@ -7,18 +7,23 @@ import { Repository } from 'typeorm';
 export class AnimalsService {
   constructor(
     @InjectRepository(Animal)
-    private readonly usersRepository: Repository<Animal>,
+    private readonly animalRepository: Repository<Animal>,
   ) {}
 
-  findAll(): Promise<Animal[]> {
-    return this.usersRepository.find();
+  async getAll(): Promise<Animal[]> {
+    return await this.animalRepository.find();
   }
 
-  findOne(id: string): Promise<Animal> {
-    return this.usersRepository.findOne(id);
+  // findOne(id: string): Promise<Animal> {
+  //   return this.animalRepository.findOne(id);
+  // }
+
+  create(newAnimal: Animal): Promise<Animal> {
+    console.log('Service animal', newAnimal);
+    return this.animalRepository.save(newAnimal);
   }
 
-  async remove(id: string): Promise<void> {
-    await this.usersRepository.delete(id);
-  }
+  // async remove(id: string): Promise<void> {
+  //   await this.animalRepository.delete(id);
+  // }
 }
