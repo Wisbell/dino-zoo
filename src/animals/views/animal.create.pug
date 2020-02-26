@@ -1,7 +1,6 @@
 extends ../../views/layout.pug
 
 block content
-
   .section
     .container.is-fluid
       .columns.is-centered
@@ -20,8 +19,8 @@ block content
               .control
                 .select
                   select#gender
-                    option(value='male') Male
-                    option(value='female') Female
+                    option(value='Male') Male
+                    option(value='Female') Female
             .field
               label.label.has-text-white Age
               .control
@@ -35,7 +34,6 @@ block content
                 button.button.is-link(onclick='createAnimal()') Submit
               .control
                 button.button.is-link.is-light(onclick="goTo('/animals')") Cancel
-
 
 block scripts
   script(type='text/javascript' src='/js/animal.create.js')
