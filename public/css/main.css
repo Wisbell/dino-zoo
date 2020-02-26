@@ -1,21 +1,4 @@
 @charset "UTF-8";
-/*
-// 1. Import the initial variables
-@import "../node_modules/bulma/sass/utilities/initial-variables";
-// 2. Set your own initial variables
-// Update the blue shade, used for links
-$blue: #06bcef;
-// Add pink and its invert
-$pink: #ff8080;
-$pink-invert: #fff;
-// Update the sans-serif font family
-$family-sans-serif: "Helvetica", "Arial", sans-serif;
-// 3. Set the derived variables
-// Use the new pink as the primary color
-$primary: $pink;
-$primary-invert: $pink-invert;
-// 4. Import the rest of Bulma
-*/
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -4758,13 +4741,13 @@ a.tag:hover {
 .card {
   background-color: white;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
-  color: #4a4a4a;
+  color: white;
   max-width: 100%;
   position: relative;
 }
 
 .card-header {
-  background-color: transparent;
+  background-color: red;
   align-items: stretch;
   box-shadow: 0 0.125em 0.25em rgba(10, 10, 10, 0.1);
   display: flex;
@@ -4772,7 +4755,7 @@ a.tag:hover {
 
 .card-header-title {
   align-items: center;
-  color: #363636;
+  color: black;
   display: flex;
   flex-grow: 1;
   font-weight: 700;
@@ -4796,12 +4779,12 @@ a.tag:hover {
 }
 
 .card-content {
-  background-color: transparent;
+  background-color: black;
   padding: 1.5rem;
 }
 
 .card-footer {
-  background-color: transparent;
+  background-color: black;
   border-top: 1px solid #ededed;
   align-items: stretch;
   display: flex;
