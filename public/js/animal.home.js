@@ -1,9 +1,21 @@
-fetch('/api/animals')
-.then((data) => {
-  console.log('Successfully got Dinos:', data.json());
-  // console.log('Successfully got Dinos:', data.text());
-  // console.log('Successfully got Dinos:', JSON.parse(data.text()));
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
+function deleteAnimal(id) {
+  var result = confirm("Are you sure?");
+
+  if (result) {
+    fetch(`/animals/${id}`, {
+      method: 'DELETE',
+      mode: 'same-origin'
+    })
+    .then((response) => {
+      console.log('Successfully deleted dino:', response);
+      goTo('/animals');
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+}
+
+function goTo(url) {
+  window.location = url;
+}
