@@ -1,6 +1,6 @@
 import { Animal } from "./animal.entity";
 
-export class CreateAnimalDto {
+export class AnimalDto {
 
   name: string;
   species: string;
@@ -10,21 +10,21 @@ export class CreateAnimalDto {
 
   // keeper; // Add keeper ID or Keeper model here
 
-  static toAnimal(createAnimalDto: CreateAnimalDto) {
+  static toAnimal(animalDto: AnimalDto) {
     const {
       name,
       species,
       gender,
       age,
       numberOfKills
-    } = createAnimalDto;
+    } = animalDto;
 
     const animal = new Animal();
     animal.name = name;
     animal.species = species;
     animal.gender = gender;
-    animal.age = parseInt(age);
-    animal.numberOfKills = parseInt(numberOfKills);
+    animal.age = parseInt(age) || 0;
+    animal.numberOfKills = parseInt(numberOfKills) || 0;
     return animal;
   }
 }
