@@ -12,10 +12,10 @@ function createAnimal() {
     species: speciesInput.value,
     gender: genderSelect.value,
     age: ageInput.value,
-    numberOfKills: numberOfKillsInput.value,
+    numberOfKills: numberOfKillsInput.value
   }
 
-  fetch('/api/animals', {
+  fetch('/animals', {
     method: 'POST',
     mode: 'same-origin',
     headers: {
@@ -25,7 +25,8 @@ function createAnimal() {
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log('Successfully added Dino:', data);
+    console.log('Successfully added dinosaur:', data);
+    goTo('/animals');
   })
   .catch((error) => {
     console.error('Error:', error);
