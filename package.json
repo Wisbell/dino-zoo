@@ -1,6 +1,9 @@
 {
   "name": "dino-zoo",
   "version": "0.0.1",
+  "engines": {
+    "node": "12.14.1"
+  },
   "description": "",
   "author": "",
   "license": "MIT",
