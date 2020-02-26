@@ -1,0 +1,15 @@
+.column.is-one-third
+  .card
+    header.card-header
+      p.card-header-title Dinosaur
+    .card-content
+      .content
+        div Id: #{animal.id}
+        div Name: #{animal.name}
+        div Species: #{animal.species}
+        div Gender: #{animal.gender}
+        div Age: #{animal.age}
+        div Number of Kills: #{animal.numberOfKills}
+    footer.card-footer
+      a.card-footer-item(href=`/animals/edit/${animal.id}`) Edit
+      a.card-footer-item(onclick=`deleteAnimal(${animal.id})`) Delete

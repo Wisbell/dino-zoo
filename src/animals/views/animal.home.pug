@@ -3,7 +3,7 @@ extends ../../views/layout.pug
 block content
   .section
     .content
-      h1.has-text-white.has-text-centered Manage Animals
+      h1.has-text-white.has-text-centered #{hero_text}
 
     .container.is-fluid
       .columns.is-centered
@@ -12,7 +12,15 @@ block content
             a.button.is-medium.is-danger(href='/animals/create') Add Dino
 
     .content
-      h1.has-text-white dinos
+      if animals.length > 0
+        br
+        h1.has-text-white.has-text-centered Dinos
+        .columns.is-multiline
+          each animal in animals
+            include animal.list-template.pug
+      else
+        h3.has-text-white No Dinos
+
 
 block scripts
   script(type='text/javascript' src='/js/animal.home.js')
