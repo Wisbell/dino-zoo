@@ -1,0 +1,43 @@
+extends ../../views/layout.pug
+
+block content
+  .section
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          form(onsubmit='event.preventDefault();')
+            .field
+              label.label.has-text-white Id
+              .control
+                input.input(type='text' name='id' placeholder='Id #' value=`${animal.id}` disabled)
+            .field
+              label.label.has-text-white Name
+              .control
+                input.input(type='text' name='name' placeholder='Name of Dinosaur' value=`${animal.name}`)
+            .field
+              label.label.has-text-white Species
+              .control
+                input.input(type='text' name='species' placeholder='Species of Dinosaur' value=`${animal.species}`)
+            .field
+              label.label.has-text-white Gender
+              .control
+                .select
+                  select(id='gender')
+                    option(value='Male') Male
+                    option(value='Female') Female
+            .field
+              label.label.has-text-white Age
+              .control
+                input.input(type='text' name='age' placeholder='Age' value=`${animal.age}`)
+            .field
+              label.label.has-text-white Number of Kills
+              .control
+                input.input(type='text' name='numberOfKills' placeholder='Number of Kills?' value=`${animal.numberOfKills}`)
+            .field.is-grouped
+              .control
+                button.button.is-link(onclick='updateAnimal()') Submit
+              .control
+                button.button.is-link.is-light(onclick="goTo('/animals')") Cancel
+
+block scripts
+  script(type='text/javascript' src='/js/animal.edit.js')
