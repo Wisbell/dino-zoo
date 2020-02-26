@@ -8,4 +8,14 @@ export class AnimalRepository extends Repository<Animal> {
     const animal = CreateAnimalDto.toAnimal(createAnimalDto);
     return animal.save();
   }
+
+  async updateAnimal(existingAnimal: Animal, updatedAnimalDto: CreateAnimalDto) {
+    const updatedAnimal = CreateAnimalDto.toAnimal(updatedAnimalDto);
+    existingAnimal.name = updatedAnimal.name;
+    existingAnimal.species = updatedAnimal.species;
+    existingAnimal.gender = updatedAnimal.gender;
+    existingAnimal.age = updatedAnimal.age;
+    existingAnimal.numberOfKills = updatedAnimal.numberOfKills;
+    return this.save(existingAnimal);
+  }
 }
