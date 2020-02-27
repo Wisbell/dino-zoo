@@ -8,6 +8,7 @@ Built with
 * Pug JS (Templating) - https://pugjs.org/
 * TypeORM (Database ORM) - https://typeorm.io/#/
 * Bulma (CSS Framework) - https://bulma.io/
+* Postgres (SQL DB) - https://www.postgresql.org/
 
 ## Setup
 
@@ -57,10 +58,12 @@ $ npm run sass:watch
 
 - Add Personnel CRUD
 
-- Add tests for services/controllers
+- Add tests for services/controllers/maybe front end as well
 
 - Refactor create/edit forms into one pug file
 
 - Add nullable type to age/numberOfkills for animal entity
+
+- Add about page with github link
 
 
