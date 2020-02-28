@@ -6,6 +6,11 @@
 // Input
 $input-placeholder-color: black;
 
+// Background colors
+.has-background-red {
+  background-color: red;
+}
+
 @import "./nav.custom.scss";
 @import "./card.custom.scss";
 @import "./slider.custom.scss";
