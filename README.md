@@ -66,4 +66,5 @@ $ npm run sass:watch
 
 - Add about page with github link
 
+- Add image link validation in create/edit form
 

@@ -28,14 +28,9 @@ function createAnimal() {
   .then((response) => response.json())
   .then((data) => {
     console.log('Successfully added dinosaur:', data);
-    goTo('/animals');
+    goTo('/animals'); // utilities.js
   })
   .catch((error) => {
     console.error('Error:', error);
   });
 }
-
-function goTo(url) {
-  window.location = url;
-}
-

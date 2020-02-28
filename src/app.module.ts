@@ -10,16 +10,6 @@ import { typeOrmConfig } from './config/typeorm.config';
   imports: [
     AnimalsModule,
     PersonnelModule,
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'localhost',
-    //   port: 5432,
-    //   username: 'postgres',
-    //   password: 'postgres',
-    //   database: 'test',
-    //   entities: [Animal],
-    //   synchronize: true,
-    // }),
     TypeOrmModule.forRoot(typeOrmConfig),
   ],
   controllers: [AppController]

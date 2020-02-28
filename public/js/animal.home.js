@@ -8,14 +8,10 @@ function deleteAnimal(id) {
     })
     .then((response) => {
       console.log('Successfully deleted dino:', response);
-      goTo('/animals');
+      goTo('/animals'); // utilities.js
     })
     .catch((error) => {
       console.error('Error:', error);
     });
   }
-}
-
-function goTo(url) {
-  window.location = url;
 }

@@ -29,14 +29,9 @@ function updateAnimal() {
   .then((response) => response.json())
   .then((data) => {
     console.log('Successfully updated Dino:', data);
-    goTo('/animals');
+    goTo('/animals'); // utilities.js
   })
   .catch((error) => {
     console.error('Error:', error);
   });
 }
-
-function goTo(url) {
-  window.location = url;
-}
-
