@@ -7,6 +7,7 @@ export class AnimalDto {
   gender: string;
   age: string;
   numberOfKills: string;
+  imageUrl: string;
 
   // keeper; // Add keeper ID or Keeper model here
 
@@ -16,7 +17,8 @@ export class AnimalDto {
       species,
       gender,
       age,
-      numberOfKills
+      numberOfKills,
+      imageUrl
     } = animalDto;
 
     const animal = new Animal();
@@ -25,6 +27,7 @@ export class AnimalDto {
     animal.gender = gender;
     animal.age = parseInt(age) || 0;
     animal.numberOfKills = parseInt(numberOfKills) || 0;
+    animal.imageUrl = imageUrl;
     return animal;
   }
 }

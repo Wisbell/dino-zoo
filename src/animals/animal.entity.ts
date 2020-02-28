@@ -20,5 +20,8 @@ export class Animal extends BaseEntity{
   @Column()
   numberOfKills: number;
 
+  @Column()
+  imageUrl: string;
+
   // keeper; // Add keeper ID or Keeper model here
 }
