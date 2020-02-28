@@ -33,6 +33,10 @@ block content
               label.label.has-text-white Number of Kills
               .control
                 input.input(type='text' name='numberOfKills' placeholder='Number of Kills?' value=`${animal.numberOfKills}`)
+            .field
+              label.label.has-text-white Dinosaur Image URL
+              .control
+                input.input(type='text' name='imageUrl' placeholder='Enter valid picture URL' value=`${animal.imageUrl}`)
             .field.is-grouped
               .control
                 button.button.is-link(onclick='updateAnimal()') Submit
