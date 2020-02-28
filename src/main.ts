@@ -12,6 +12,7 @@ async function bootstrap() {
   app.setBaseViewsDir([
     join(__dirname, '..', 'src', 'views'),
     join(__dirname, '..', 'src', 'animals', 'views'),
+    join(__dirname, '..', 'src', 'personnel', 'views'),
   ]);
 
   app.setViewEngine('pug');
