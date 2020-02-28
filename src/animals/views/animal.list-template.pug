@@ -1,7 +1,10 @@
 .column.is-one-third
   .card
-    header.card-header
-      p.card-header-title Dinosaur
+    |<div class="card-image has-text-centered has-background-red">
+    |  <figure class="image is-128x128 is-inline-block">
+    |    <img src=#{animal.imageUrl} alt="Placeholder image">
+    |  </figure>
+    |</div>
     .card-content
       .content
         div Id: #{animal.id}
