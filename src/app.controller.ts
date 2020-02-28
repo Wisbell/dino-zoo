@@ -11,13 +11,4 @@ export class AppController {
       hero_text: 'Jurassic Park Employee and Animal Management System'
     };
   }
-
-  @Get('personnel')
-  @Render('personnel')
-  personnel() {
-    return {
-      title: 'JP - Personnel Management',
-      hero_text: 'Employee Management '
-    };
-  }
 }
