@@ -1,0 +1,42 @@
+extends ../../views/layout.pug
+
+block content
+  .section
+    .content
+      h1.has-text-white.has-text-centered #{hero_text}
+
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          .buttons.is-centered
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/trainer/create') Add Trainer
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/keeper/create') Add Keeper
+
+    .container.is-fluid
+      .columns.is-centered
+        .column
+          .tabs.is-centered.is-medium.is-toggle
+            ul
+              li#all.is-active(onClick="setActiveTab('all')")
+                a Show All Employees
+              li#keepers(onClick="setActiveTab('keepers')")
+                a Show Only Keepers
+              li#trainers(onClick="setActiveTab('trainers')")
+                a Show Only Trainers
+
+
+
+
+    //- .content
+    //-   if animals.length > 0
+    //-     br
+    //-     h1.has-text-white.has-text-centered Dinos
+    //-     .columns.is-multiline
+    //-       each animal in animals
+    //-         include animal.list-template.pug
+    //-   else
+    //-     h3.has-text-white No Dinos
+
+
+block scripts
+  script(type='text/javascript' src='/js/personnel.home.js')
