@@ -7,13 +7,15 @@ function updateAnimal() {
   const genderSelect = dinoForm.querySelector('#gender');
   const ageInput = dinoForm.querySelector('input[name=age]');
   const numberOfKillsInput = dinoForm.querySelector('input[name=numberOfKills]');
+  const imageUrlInput = dinoForm.querySelector('input[name=imageUrl]');
 
   const updatedAnimal = {
     name: nameInput.value,
     species: speciesInput.value,
     gender: genderSelect.value,
     age: ageInput.value,
-    numberOfKills: numberOfKillsInput.value
+    numberOfKills: numberOfKillsInput.value,
+    imageUrl: imageUrlInput.value
   }
 
   fetch(`/animals/${idInput.value}`, {
