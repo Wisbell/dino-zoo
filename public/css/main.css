@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.has-background-red {
+  background-color: red;
+}
+
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
