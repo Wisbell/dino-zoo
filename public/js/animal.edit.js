@@ -29,9 +29,15 @@ function updateAnimal() {
     body: JSON.stringify(updatedAnimal),
   })
   .then((response) => response.json())
-  .then((data) => {
-    console.log('Successfully updated Dino:', data);
-    goTo('/animals'); // utilities.js
+  .then((response) => {
+    console.log('response', response);
+    const responseHasErrorStatusCode =
+      checkIfResponseHasErrorStatusCode(response); // utilities.js
+
+    if (responseHasErrorStatusCode)
+      handleHttpError(response); // utilities.js
+    else
+      goTo('/animals'); // utilities.js
   })
   .catch((error) => {
     console.error('Error:', error);
