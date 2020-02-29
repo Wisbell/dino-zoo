@@ -34,11 +34,17 @@ block content
             .field
               label.label.has-text-white Age
               .control
-                input.input(type='text' name='age' placeholder='Age' value=`${animal.age}`)
+                if (animal.age)
+                  input.input(type='text' name='age' placeholder='Age' value=`${animal.age}`)
+                else
+                  input.input(type='text' name='age' placeholder='Age')
             .field
               label.label.has-text-white Number of Kills
               .control
-                input.input(type='text' name='numberOfKills' placeholder='Number of Kills?' value=`${animal.numberOfKills}`)
+                if (animal.numberOfKills)
+                  input.input(type='text' name='numberOfKills' placeholder='Number of Kills?' value=`${animal.numberOfKills}`)
+                else
+                  input.input(type='text' name='numberOfKills' placeholder='Number of Kills?' value='')
             .field
               label.label.has-text-white Dinosaur Image URL
               .control
