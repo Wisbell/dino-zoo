@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { AnimalCategory } from './animal-category.enum';
 
 @Entity()
 export class Animal extends BaseEntity{
@@ -14,14 +15,17 @@ export class Animal extends BaseEntity{
   @Column()
   gender: string;
 
-  @Column()
-  age: number;
+  @Column({ nullable: true })
+  age?: number;
+
+  @Column({ nullable: true })
+  numberOfKills?: number;
+
+  @Column({ nullable: true })
+  imageUrl?: string;
 
   @Column()
-  numberOfKills: number;
-
-  @Column()
-  imageUrl: string;
+  category: AnimalCategory;
 
   // keeper; // Add keeper ID or Keeper model here
 }
