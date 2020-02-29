@@ -1,4 +1,9 @@
-function deleteAnimal(id) {
+async function deleteAnimal(id) {
+  const audio = new Audio("./sound/you-didn't-say-the-magic-word.mp3");
+  audio.play();
+
+  await delay(1000); // utilities.js
+
   var result = confirm("Are you sure?");
 
   if (result) {
@@ -7,8 +12,13 @@ function deleteAnimal(id) {
       mode: 'same-origin'
     })
     .then((response) => {
-      console.log('Successfully deleted dino:', response);
-      goTo('/animals'); // utilities.js
+      const responseHasErrorStatusCode =
+        checkIfResponseHasErrorStatusCode(response); // utilities.js
+
+      if (responseHasErrorStatusCode)
+        handleHttpError(response); // utilities.js
+      else
+        goTo('/animals'); // utilities.js
     })
     .catch((error) => {
       console.error('Error:', error);
