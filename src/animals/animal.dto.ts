@@ -43,7 +43,7 @@ export class AnimalDto {
     animal.gender = gender;
     animal.age = parseInt(age) || null;
     animal.numberOfKills = parseInt(numberOfKills) || null;
-    animal.imageUrl = imageUrl || null;
+    animal.imageUrl = imageUrl;
     animal.category = category;
     return animal;
   }
