@@ -17,6 +17,7 @@ export class AnimalRepository extends Repository<Animal> {
     existingAnimal.age = updatedAnimal.age;
     existingAnimal.numberOfKills = updatedAnimal.numberOfKills;
     existingAnimal.imageUrl = updatedAnimal.imageUrl;
+    existingAnimal.category = updatedAnimal.category;
     return this.save(existingAnimal);
   }
 }
