@@ -38,6 +38,11 @@ export class AnimalController {
     };
   }
 
+  @Get(':id')
+  async animalsJSON(@Param('id') id: string) {
+    return await this.animalService.getOne(id);
+  }
+
   @Post()
   createAnimal(@Body() createAnimalDto: AnimalDto) {
     return this.animalService.create(createAnimalDto);
