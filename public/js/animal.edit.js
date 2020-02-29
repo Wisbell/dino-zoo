@@ -30,7 +30,6 @@ function updateAnimal() {
   })
   .then((response) => response.json())
   .then((response) => {
-    console.log('response', response);
     const responseHasErrorStatusCode =
       checkIfResponseHasErrorStatusCode(response); // utilities.js
 
