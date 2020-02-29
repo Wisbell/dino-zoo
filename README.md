@@ -53,9 +53,6 @@ $ npm run sass:watch
 ```
 
 ## TODO
-- Add error handling on front end scripts
-  - Check for non 200 status codes in data responses when creating/updating
-
 - Add Personnel CRUD
 
 - Add tests for services/controllers/maybe front end as well
