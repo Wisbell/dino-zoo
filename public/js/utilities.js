@@ -69,3 +69,5 @@ function getHttpErrorType(httpResponse) {
 function getFirstCharacterOfString(string) {
   return string.charAt(0);
 }
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
