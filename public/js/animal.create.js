@@ -7,6 +7,7 @@ function createAnimal() {
   const ageInput = dinoForm.querySelector('input[name=age]');
   const numberOfKillsInput = dinoForm.querySelector('input[name=numberOfKills]');
   const imageUrlInput = dinoForm.querySelector('input[name=imageUrl]');
+  const categorySelect = dinoForm.querySelector('#category');
 
   const newAnimal = {
     name: nameInput.value,
@@ -14,7 +15,8 @@ function createAnimal() {
     gender: genderSelect.value,
     age: ageInput.value,
     numberOfKills: numberOfKillsInput.value,
-    imageUrl: imageUrlInput.value
+    imageUrl: imageUrlInput.value,
+    category: categorySelect.value
   }
 
   fetch('/animals', {
@@ -26,11 +28,16 @@ function createAnimal() {
     body: JSON.stringify(newAnimal),
   })
   .then((response) => response.json())
-  .then((data) => {
-    console.log('Successfully added dinosaur:', data);
-    goTo('/animals'); // utilities.js
+  .then((response) => {
+    const responseHasErrorStatusCode =
+      checkIfResponseHasErrorStatusCode(response); // utilities.js
+
+    if (responseHasErrorStatusCode)
+      handleHttpError(response); // utilities.js
+    else
+      goTo('/animals'); // utilities.js
   })
   .catch((error) => {
-    console.error('Error:', error);
+    console.warn('Error:', error);
   });
 }
