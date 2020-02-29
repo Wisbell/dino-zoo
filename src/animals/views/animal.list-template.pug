@@ -13,6 +13,7 @@
         div Gender: #{animal.gender}
         div Age: #{animal.age}
         div Number of Kills: #{animal.numberOfKills}
+        div Category: #{animal.category}
     footer.card-footer
       a.card-footer-item(href=`/animals/edit/${animal.id}`) Edit
       a.card-footer-item(onclick=`deleteAnimal(${animal.id})`) Delete
