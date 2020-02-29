@@ -23,8 +23,14 @@ block content
               .control
                 .select
                   select(id='gender')
-                    option(value='Male') Male
-                    option(value='Female') Female
+                    if (animal.gender === 'Male')
+                      option(value='Male' selected) Male
+                    else
+                      option(value='Male') Male
+                    if (animal.gender === 'Female')
+                      option(value='Female' selected) Female
+                    else
+                      option(value='Female') Female
             .field
               label.label.has-text-white Age
               .control
@@ -37,6 +43,16 @@ block content
               label.label.has-text-white Dinosaur Image URL
               .control
                 input.input(type='text' name='imageUrl' placeholder='Enter valid picture URL' value=`${animal.imageUrl}`)
+            .field
+              label.label.has-text-white Category
+              .control
+                .select
+                  select#category
+                    each value, key in animal_categories
+                      if (animal.category === (value))
+                        option(value=`${value}` selected) #{value}
+                      else
+                        option(value=`${value}`) #{value}
             .field.is-grouped
               .control
                 button.button.is-link(onclick='updateAnimal()') Submit

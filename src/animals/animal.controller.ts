@@ -1,6 +1,7 @@
 import { Controller, Get, Render, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './animal.dto';
+import { AnimalCategory } from './animal-category.enum';
 
 @Controller('animals')
 export class AnimalController {
@@ -22,7 +23,8 @@ export class AnimalController {
   @Render('animal.create.pug')
   animalsCreate() {
     return {
-      title: 'JP - Animal Management'
+      title: 'JP - Animal Management',
+      animal_categories: AnimalCategory
     };
   }
 
@@ -31,7 +33,8 @@ export class AnimalController {
   async animalsEdit(@Param('id') id: string) {
     return {
       title: 'JP - Animal Management',
-      animal: await this.animalService.getOne(id)
+      animal: await this.animalService.getOne(id),
+      animal_categories: AnimalCategory
     };
   }
 

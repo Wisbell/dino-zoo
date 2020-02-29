@@ -33,6 +33,13 @@ block content
               label.label.has-text-white Dinosaur Image URL
               .control
                 input.input(type='text' name='imageUrl' placeholder='Enter valid picture URL')
+            .field
+              label.label.has-text-white Category
+              .control
+                .select
+                  select#category
+                    each value, key in animal_categories
+                      option(value=`${value}`) #{value}
             .field.is-grouped
               .control
                 button.button.is-link(onclick='createAnimal()') Submit
