@@ -21,7 +21,7 @@ export class Animal extends BaseEntity{
   @Column({ nullable: true })
   numberOfKills?: number;
 
-  @Column({ nullable: true })
+  @Column()
   imageUrl?: string;
 
   @Column()

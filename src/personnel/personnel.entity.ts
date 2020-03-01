@@ -13,11 +13,11 @@ export abstract class Personnel extends BaseEntity {
   @Column()
   gender: string;
 
-  @Column()
+  @Column({ nullable: true })
   age: number;
 
   @Column()
-  dateOfHire: Date;
+  dateOfHire: string; // TODO: Implement use of date times -> : Date
 
   @Column()
   imageUrl: string;

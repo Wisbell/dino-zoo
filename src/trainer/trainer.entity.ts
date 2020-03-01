@@ -1,10 +1,10 @@
 import { Entity, Column } from 'typeorm';
-import { Personnel } from 'src/personnel/personnel.entity';
+import { Personnel } from '../personnel/personnel.entity';
 
 @Entity()
 export class Trainer extends Personnel {
   @Column()
-  trickSpeciality: string;
+  trickExpertise: string;
 
   // TODO: Add relationships here?
 }

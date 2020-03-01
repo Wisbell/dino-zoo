@@ -27,15 +27,16 @@ block content
 
 
 
-    //- .content
-    //-   if animals.length > 0
-    //-     br
-    //-     h1.has-text-white.has-text-centered Dinos
-    //-     .columns.is-multiline
-    //-       each animal in animals
-    //-         include animal.list-template.pug
-    //-   else
-    //-     h3.has-text-white No Dinos
+    .content
+      if personnel.trainers.length > 0
+        br
+        h1.has-text-white.has-text-centered Trainers
+        .columns.is-multiline
+          each trainer in personnel.trainers
+            p #{JSON.stringify(trainer)}
+            //- include trainer.list-template.pug
+      else
+        h3.has-text-white No Trainers
 
 
 block scripts
