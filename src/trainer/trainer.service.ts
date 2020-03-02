@@ -19,8 +19,8 @@ export class TrainerService {
     return this.trainerRepository.findOne(id);
   }
 
-  create(newAnimal: TrainerDto): Promise<Trainer> {
-    return this.trainerRepository.createTrainer(newAnimal);
+  create(newTrainer: TrainerDto): Promise<Trainer> {
+    return this.trainerRepository.createTrainer(newTrainer);
   }
 
   async update(id:string, updatedTrainerDto: TrainerDto): Promise<Trainer> {

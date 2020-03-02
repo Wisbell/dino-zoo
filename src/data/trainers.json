@@ -6,7 +6,8 @@
     "category_id": "3",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/173x226.jpg/dddddd/000000",
-    "dateOfHire": "1/10/2017"
+    "dateOfHire": "1/10/2017",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -16,7 +17,8 @@
     "category_id": "1",
     "gender": "Female",
     "imageUrl": "http://dummyimage.com/236x214.jpg/5fa2dd/ffffff",
-    "dateOfHire": "3/31/2017"
+    "dateOfHire": "3/31/2017",
+    "trickExpertise": "Roars"
   },
 
   {
@@ -26,7 +28,8 @@
     "category_id": "4",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/124x229.jpg/5fa2dd/ffffff",
-    "dateOfHire": "1/27/2017"
+    "dateOfHire": "1/27/2017",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -36,7 +39,8 @@
     "category_id": "1",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/114x204.jpg/ff4444/ffffff",
-    "dateOfHire": "10/16/2016"
+    "dateOfHire": "10/16/2016",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -46,7 +50,8 @@
     "category_id": "6",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/227x207.jpg/cc0000/ffffff",
-    "dateOfHire": "6/21/2016"
+    "dateOfHire": "6/21/2016",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -56,7 +61,8 @@
     "category_id": "2",
     "gender": "Female",
     "imageUrl": "http://dummyimage.com/237x198.jpg/dddddd/000000",
-    "dateOfHire": "1/28/2017"
+    "dateOfHire": "1/28/2017",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -66,7 +72,8 @@
     "category_id": "3",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/241x102.jpg/ff4444/ffffff",
-    "dateOfHire": "10/29/2016"
+    "dateOfHire": "10/29/2016",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -76,7 +83,8 @@
     "category_id": "3",
     "gender": "Female",
     "imageUrl": "http://dummyimage.com/183x236.jpg/dddddd/000000",
-    "dateOfHire": "5/27/2016"
+    "dateOfHire": "5/27/2016",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -86,7 +94,8 @@
     "category_id": "4",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/108x192.jpg/cc0000/ffffff",
-    "dateOfHire": "10/28/2016"
+    "dateOfHire": "10/28/2016",
+    "trickExpertise": "Jumps"
   },
 
   {
@@ -96,6 +105,7 @@
     "category_id": "5",
     "gender": "Male",
     "imageUrl": "http://dummyimage.com/194x132.jpg/5fa2dd/ffffff",
-    "dateOfHire": "11/4/2016"
+    "dateOfHire": "11/4/2016",
+    "trickExpertise": "Jumps"
   }
 ]

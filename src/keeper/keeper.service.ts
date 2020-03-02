@@ -19,8 +19,8 @@ export class KeeperService {
     return this.keeperRepository.findOne(id);
   }
 
-  create(newAnimal: KeeperDto): Promise<Keeper> {
-    return this.keeperRepository.createKeeper(newAnimal);
+  create(newKeeper: KeeperDto): Promise<Keeper> {
+    return this.keeperRepository.createKeeper(newKeeper);
   }
 
   async update(id:string, updatedTrainerDto: KeeperDto): Promise<Keeper> {

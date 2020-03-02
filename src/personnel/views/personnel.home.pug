@@ -24,16 +24,6 @@ block content
               li#trainersTab(onClick="setActiveTab('trainersTab')")
                 a Show Only Trainers
 
-    .content#trainers
-      if personnel.trainers.length > 0
-        br
-        h1.has-text-white.has-text-centered Trainers
-        .columns.is-multiline
-          each trainer in personnel.trainers
-            include ../../trainer/views/trainer.list-template.pug
-      else
-        h3.has-text-white No Trainers
-
     .content#keepers
       if personnel.keepers.length > 0
         br
@@ -44,6 +34,15 @@ block content
       else
         h3.has-text-white No Keepers
 
+    .content#trainers
+      if personnel.trainers.length > 0
+        br
+        h1.has-text-white.has-text-centered Trainers
+        .columns.is-multiline
+          each trainer in personnel.trainers
+            include ../../trainer/views/trainer.list-template.pug
+      else
+        h3.has-text-white No Trainers
 
 block scripts
   script(type='text/javascript' src='/js/personnel.home.js')
