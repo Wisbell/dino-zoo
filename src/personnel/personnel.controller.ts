@@ -1,10 +1,12 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { TrainerService } from 'src/trainer/trainer.service';
+import { KeeperService } from 'src/keeper/keeper.service';
 
 @Controller('personnel')
 export class PersonnelController {
   constructor(
-    private trainerService: TrainerService
+    private trainerService: TrainerService,
+    private keeperService: KeeperService
   ) {}
 
   @Get()
@@ -15,7 +17,7 @@ export class PersonnelController {
       hero_text: 'Personnel Management',
       personnel: {
         trainers: await this.trainerService.getAll(),
-        keepers: []
+        keepers: await this.keeperService.getAll()
       }
     };
   }
