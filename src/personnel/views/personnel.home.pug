@@ -9,8 +9,8 @@ block content
       .columns.is-centered
         .column.is-half
           .buttons.is-centered
-            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/trainer/create') Add Trainer
-            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/keeper/create') Add Keeper
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/trainers/create') Add Trainer
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/keepers/create') Add Keeper
 
     .container.is-fluid
       .columns.is-centered
@@ -24,19 +24,25 @@ block content
               li#trainers(onClick="setActiveTab('trainers')")
                 a Show Only Trainers
 
-
-
-
     .content
       if personnel.trainers.length > 0
         br
         h1.has-text-white.has-text-centered Trainers
         .columns.is-multiline
           each trainer in personnel.trainers
-            p #{JSON.stringify(trainer)}
-            //- include trainer.list-template.pug
+            include ../../trainer/views/trainer.list-template.pug
       else
         h3.has-text-white No Trainers
+
+    //- .content
+    //-   if personnel.keepers.length > 0
+    //-     br
+    //-     h1.has-text-white.has-text-centered Keepers
+    //-     .columns.is-multiline
+    //-       each keeper in personnel.keepers
+    //-         include ../../trainer/views/keeper.list-template.pug
+    //-   else
+    //-     h3.has-text-white No Keepers
 
 
 block scripts
