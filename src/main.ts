@@ -27,11 +27,13 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe()); // Dto validation
   app.useStaticAssets(join(__dirname, '..', 'public'));
 
+  // Add all view directories
   app.setBaseViewsDir([
     join(__dirname, '..', 'src', 'views'),
     join(__dirname, '..', 'src', 'animal', 'views'),
     join(__dirname, '..', 'src', 'personnel', 'views'),
     join(__dirname, '..', 'src', 'trainer', 'views'),
+    join(__dirname, '..', 'src', 'keeper', 'views'),
   ]);
 
   app.setViewEngine('pug');
