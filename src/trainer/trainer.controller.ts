@@ -37,8 +37,8 @@ export class TrainerController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() TrainerDto: TrainerDto) {
-    return this.trainerService.update(id, TrainerDto);
+  update(@Param('id') id: string, @Body() updatedTrainer: TrainerDto) {
+    return this.trainerService.update(id, updatedTrainer);
   }
 
   @Delete(':id')

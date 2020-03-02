@@ -43,7 +43,8 @@ function getSliderOutputPosition( slider ) {
 
 document.addEventListener( 'DOMContentLoaded', function () {
 
-  const audio = new Audio("./sound/creaky_door_4.mp3"); // Create Audio
+  const audio = new Audio("./sound/creaky_door_4.mp3");
+  audio.volume = .25; // Default volume
 
   // Get all document sliders
   var sliders = document.querySelectorAll( 'input[type="range"].slider' );
