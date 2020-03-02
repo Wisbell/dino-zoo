@@ -4,7 +4,7 @@ import { PersonnelDto } from "src/personnel/personnel.dto";
 
 export class KeeperDto extends PersonnelDto {
   @IsString()
-  dinosaurSpeciality: string;
+  speciality: string;
 
   // keeper; // Add keeper ID or Keeper model here
 
@@ -15,7 +15,7 @@ export class KeeperDto extends PersonnelDto {
       gender,
       age,
       dateOfHire,
-      dinosaurSpeciality,
+      speciality,
       imageUrl
     } = keeperDto;
 
@@ -25,7 +25,7 @@ export class KeeperDto extends PersonnelDto {
     keeper.gender = gender;
     keeper.age = parseInt(age) || null;
     keeper.dateOfHire = dateOfHire;
-    keeper.dinosaurSpeciality = dinosaurSpeciality;
+    keeper.speciality = speciality;
     keeper.imageUrl = imageUrl;
     return keeper;
   }

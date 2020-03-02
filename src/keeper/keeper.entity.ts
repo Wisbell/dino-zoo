@@ -4,7 +4,7 @@ import { Personnel } from 'src/personnel/personnel.entity';
 @Entity()
 export class Keeper extends Personnel {
   @Column()
-  dinosaurSpeciality: string;
+  speciality: string;
 
   // TODO: Add relationships here?
 }

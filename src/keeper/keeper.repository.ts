@@ -17,7 +17,7 @@ export class KeeperRepository extends Repository<Keeper> {
     existingKeeper.age = updatedKeeper.age;
     existingKeeper.dateOfHire = updatedKeeper.dateOfHire;
     existingKeeper.imageUrl = updatedKeeper.imageUrl;
-    existingKeeper.dinosaurSpeciality = updatedKeeper.dinosaurSpeciality;
+    existingKeeper.speciality = updatedKeeper.speciality;
     return this.save(existingKeeper);
   }
 }
