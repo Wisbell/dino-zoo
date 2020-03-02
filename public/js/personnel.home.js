@@ -1,19 +1,25 @@
-function setActiveTab(tabName) {
-  switch(tabName) {
-    case 'all':
-      document.querySelector('#all').classList.add('is-active')
-      document.querySelector('#keepers').classList.remove('is-active')
-      document.querySelector('#trainers').classList.remove('is-active')
+function setActiveTab(tab) {
+  switch(tab) {
+    case 'allTab':
+      document.querySelector('#allTab').classList.add('is-active');
+      document.querySelector('#keepersTab').classList.remove('is-active');
+      document.querySelector('#trainersTab').classList.remove('is-active');
+      document.querySelector('#keepers').classList.remove('is-hidden');
+      document.querySelector('#trainers').classList.remove('is-hidden');
       break;
-    case 'keepers':
-      document.querySelector('#all').classList.remove('is-active')
-      document.querySelector('#keepers').classList.add('is-active')
-      document.querySelector('#trainers').classList.remove('is-active')
+    case 'keepersTab':
+      document.querySelector('#allTab').classList.remove('is-active');
+      document.querySelector('#keepersTab').classList.add('is-active');
+      document.querySelector('#trainersTab').classList.remove('is-active');
+      document.querySelector('#keepers').classList.remove('is-hidden');
+      document.querySelector('#trainers').classList.add('is-hidden');
       break;
-    case 'trainers':
-      document.querySelector('#all').classList.remove('is-active')
-      document.querySelector('#keepers').classList.remove('is-active')
-      document.querySelector('#trainers').classList.add('is-active')
+    case 'trainersTab':
+      document.querySelector('#allTab').classList.remove('is-active');
+      document.querySelector('#keepersTab').classList.remove('is-active');
+      document.querySelector('#trainersTab').classList.add('is-active');
+      document.querySelector('#keepers').classList.add('is-hidden');
+      document.querySelector('#trainers').classList.remove('is-hidden');
       break;
     default:
       break;

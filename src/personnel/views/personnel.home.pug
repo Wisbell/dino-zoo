@@ -17,14 +17,14 @@ block content
         .column
           .tabs.is-centered.is-medium.is-toggle
             ul
-              li#all.is-active(onClick="setActiveTab('all')")
+              li#allTab.is-active(onClick="setActiveTab('allTab')")
                 a Show All Employees
-              li#keepers(onClick="setActiveTab('keepers')")
+              li#keepersTab(onClick="setActiveTab('keepersTab')")
                 a Show Only Keepers
-              li#trainers(onClick="setActiveTab('trainers')")
+              li#trainersTab(onClick="setActiveTab('trainersTab')")
                 a Show Only Trainers
 
-    .content
+    .content#trainers
       if personnel.trainers.length > 0
         br
         h1.has-text-white.has-text-centered Trainers
@@ -34,15 +34,15 @@ block content
       else
         h3.has-text-white No Trainers
 
-    //- .content
-    //-   if personnel.keepers.length > 0
-    //-     br
-    //-     h1.has-text-white.has-text-centered Keepers
-    //-     .columns.is-multiline
-    //-       each keeper in personnel.keepers
-    //-         include ../../trainer/views/keeper.list-template.pug
-    //-   else
-    //-     h3.has-text-white No Keepers
+    .content#keepers
+      if personnel.keepers.length > 0
+        br
+        h1.has-text-white.has-text-centered Keepers
+        .columns.is-multiline
+          each keeper in personnel.keepers
+            include ../../keeper/views/keeper.list-template.pug
+      else
+        h3.has-text-white No Keepers
 
 
 block scripts

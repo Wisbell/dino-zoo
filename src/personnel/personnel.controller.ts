@@ -15,7 +15,7 @@ export class PersonnelController {
       hero_text: 'Personnel Management',
       personnel: {
         trainers: await this.trainerService.getAll(),
-        keepers: null
+        keepers: []
       }
     };
   }
