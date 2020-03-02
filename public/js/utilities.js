@@ -17,7 +17,7 @@ function handleHttpError(response) {
     position: "bottom-center",
     duration: 2500,
     animate: { in: 'fadeIn', out: 'fadeOut' }
-   });
+  });
 }
 
 function checkIfResponseHasErrorStatusCode(httpResponse) {

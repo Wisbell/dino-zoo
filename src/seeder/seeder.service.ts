@@ -2,14 +2,17 @@ import { Injectable, NotImplementedException } from '@nestjs/common';
 import { KeeperService } from '../keeper/keeper.service';
 import * as keeperData from '../data/keepers.json';
 import * as trainerData from '../data/trainers.json';
+import * as animalData from '../data/animals.json';
 import { TrainerService } from 'src/trainer/trainer.service';
+import { AnimalService } from 'src/animal/animal.service';
+import { AnimalDto } from 'src/animal/animal.dto';
 
 @Injectable()
 export class SeederService {
   constructor(
     private keeperService: KeeperService,
     private trainerService: TrainerService,
-    private animalService: TrainerService
+    private animalService: AnimalService
   ) {}
 
   seedTrainers() {
@@ -41,11 +44,25 @@ export class SeederService {
   }
 
   seedAnimals() {
-    throw new NotImplementedException();
+    animalData.forEach(async animal => { // Animal
+      const { name, species, gender, age,
+        numberOfKills, imageUrl, category
+      } = animal;
+
+      await this.animalService.create(
+        new AnimalDto(
+          name, species, gender, age,
+          numberOfKills, imageUrl, category
+      ));
+    });
   }
 
-  deleteAnimals() {
-    throw new NotImplementedException();
+  async deleteAnimals() {
+    const allAnimals = await this.animalService.getAll();
+
+    allAnimals.forEach(async animal => { // Keeper
+      await this.animalService.delete(animal.id.toString());
+    });
   }
 
 }

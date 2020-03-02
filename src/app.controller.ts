@@ -11,4 +11,13 @@ export class AppController {
       hero_text: 'Jurassic Park Employee and Animal Management System'
     };
   }
+
+  @Get('database')
+  @Render('database')
+  database() {
+    return {
+      title: 'Welcome to Jurassic Park!',
+      hero_text: 'Database Modification'
+    };
+  }
 }
