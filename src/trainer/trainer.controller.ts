@@ -10,49 +10,29 @@ export class TrainerController {
 
   @Get('create')
   @Render('trainer.create.pug')
-  personnelCreate() {
+  displayCreate() {
     return {
       title: 'JP - Personnel Management',
       header_text: 'Create Trainer'
     };
   }
 
-  // @Get()
-  // @Render('animal.home.pug')
-  // async animalsHome() {
-  //   return {
-  //     title: 'JP - Animal Management',
-  //     hero_text: 'Animal Management',
-  //     animals: await this.animalService.getAll()
-  //   };
-  // }
+  @Get('edit/:id')
+  @Render('trainer.edit.pug')
+  async displayEdit(@Param('id') id: string) {
+    return {
+      title: 'JP - Personnel Management',
+      trainer: await this.trainerService.getOne(id)
+    };
+  }
 
-  // @Get('create')
-  // @Render('animal.create.pug')
-  // animalsCreate() {
-  //   return {
-  //     title: 'JP - Animal Management',
-  //     animal_categories: AnimalCategory
-  //   };
-  // }
-
-  // @Get('edit/:id')
-  // @Render('animal.edit.pug')
-  // async animalsEdit(@Param('id') id: string) {
-  //   return {
-  //     title: 'JP - Animal Management',
-  //     animal: await this.animalService.getOne(id),
-  //     animal_categories: AnimalCategory
-  //   };
-  // }
-
-  // @Get(':id')
-  // async animalsJSON(@Param('id') id: string) {
-  //   return await this.animalService.getOne(id);
-  // }
+  @Get(':id')
+  async trainersJSON(@Param('id') id: string) {
+    return await this.trainerService.getOne(id);
+  }
 
   @Post()
-  createTrainer(@Body() createTrainerDto: TrainerDto) {
+  create(@Body() createTrainerDto: TrainerDto) {
     return this.trainerService.create(createTrainerDto);
   }
 
