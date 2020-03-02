@@ -9,4 +9,4 @@ import { AnimalRepository } from './animal.repository';
   providers: [AnimalService],
   controllers: [AnimalController]
 })
-export class AnimalsModule {}
+export class AnimalModule {}
