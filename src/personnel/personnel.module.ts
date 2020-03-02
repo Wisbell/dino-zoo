@@ -15,6 +15,6 @@ import { KeeperRepository } from 'src/keeper/keeper.repository';
   providers: [
     TrainerService,
     KeeperService
-  ],
+  ]
 })
 export class PersonnelModule {}
