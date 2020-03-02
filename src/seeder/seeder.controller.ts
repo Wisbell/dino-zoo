@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post, Delete } from '@nestjs/common';
 import { SeederService } from './seeder.service';
 
 @Controller('seeder')
@@ -7,7 +7,7 @@ export class SeederController {
     private seederService: SeederService
   ) {}
 
-  @Get('keepers')
+  @Post('keepers')
   seedKeepers() {
     try {
       this.seederService.seedKeepers();
@@ -18,7 +18,7 @@ export class SeederController {
     }
   }
 
-  @Get('keepers/delete')
+  @Delete('keepers')
   deleteKeepers() {
     try {
       this.seederService.deleteKeepers();
@@ -29,7 +29,7 @@ export class SeederController {
     }
   }
 
-  @Get('trainers')
+  @Post('trainers')
   seedTrainers() {
     try {
       this.seederService.seedTrainers();
@@ -40,7 +40,7 @@ export class SeederController {
     }
   }
 
-  @Get('trainers/delete')
+  @Delete('trainers')
   deleteTrainers() {
     try {
       this.seederService.deleteTrainers();
@@ -51,7 +51,7 @@ export class SeederController {
     }
   }
 
-  @Get('animals')
+  @Post('animals')
   seedAnimals() {
     try {
       this.seederService.seedAnimals();
@@ -62,7 +62,7 @@ export class SeederController {
     }
   }
 
-  @Get('animals/delete')
+  @Delete('animals')
   deleteAnimals() {
     try {
       this.seederService.deleteAnimals();
