@@ -6,6 +6,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { TrainerModule } from './trainer/trainer.module';
 import { KeeperModule } from './keeper/keeper.module';
 import { PersonnelModule } from './personnel/personnel.module';
+import { SeederModule } from './seeder/seeder.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PersonnelModule } from './personnel/personnel.module';
     TrainerModule,
     KeeperModule,
     PersonnelModule,
+    SeederModule,
   ],
   controllers: [AppController]
 })
