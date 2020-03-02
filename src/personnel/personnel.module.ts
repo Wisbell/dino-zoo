@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { PersonnelController } from './personnel.controller';
 import { TrainerService } from 'src/trainer/trainer.service';
 import { TrainerRepository } from 'src/trainer/trainer.repository';
-import { TrainerModule } from 'src/trainer/trainer.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
