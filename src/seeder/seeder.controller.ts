@@ -33,10 +33,10 @@ export class SeederController {
   seedTrainers() {
     try {
       this.seederService.seedTrainers();
-      return { success: "Seeding of keepers table successful" }
+      return { success: "Seeding of trainers table successful" }
     }
     catch (error) {
-      return { error: "Seeding of keepers table failed" }
+      return { error: "Seeding of trainers table failed" }
     }
   }
 
@@ -44,10 +44,10 @@ export class SeederController {
   deleteTrainers() {
     try {
       this.seederService.deleteTrainers();
-      return { success: "Deleting of keepers successful" }
+      return { success: "Deleting of trainers successful" }
     }
     catch (error) {
-      return { error: "Deleting of keepers failed" }
+      return { error: "Deleting of trainers failed" }
     }
   }
 
@@ -55,10 +55,10 @@ export class SeederController {
   seedAnimals() {
     try {
       this.seederService.seedAnimals();
-      return { success: "Seeding of keepers table successful" }
+      return { success: "Seeding of animals table successful" }
     }
     catch (error) {
-      return { error: "Seeding of keepers table failed" }
+      return { error: "Seeding of animals table failed" }
     }
   }
 
@@ -66,10 +66,10 @@ export class SeederController {
   deleteAnimals() {
     try {
       this.seederService.deleteAnimals();
-      return { success: "Deleting of keepers successful" }
+      return { success: "Deleting of animals successful" }
     }
     catch (error) {
-      return { error: "Deleting of keepers failed" }
+      return { error: "Deleting of animals failed" }
     }
   }
 }
