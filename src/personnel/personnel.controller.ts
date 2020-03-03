@@ -1,6 +1,6 @@
 import { Controller, Get, Render } from '@nestjs/common';
-import { TrainerService } from 'src/trainer/trainer.service';
-import { KeeperService } from 'src/keeper/keeper.service';
+import { TrainerService } from '../trainer/trainer.service';
+import { KeeperService } from '../keeper/keeper.service';
 
 @Controller('personnel')
 export class PersonnelController {

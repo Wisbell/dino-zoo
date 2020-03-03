@@ -3,9 +3,9 @@ import { KeeperService } from '../keeper/keeper.service';
 import * as keeperData from '../data/keepers.json';
 import * as trainerData from '../data/trainers.json';
 import * as animalData from '../data/animals.json';
-import { TrainerService } from 'src/trainer/trainer.service';
-import { AnimalService } from 'src/animal/animal.service';
-import { AnimalDto } from 'src/animal/animal.dto';
+import { TrainerService } from '../trainer/trainer.service';
+import { AnimalService } from '../animal/animal.service';
+import { AnimalDto } from '../animal/animal.dto';
 
 @Injectable()
 export class SeederService {

@@ -1,6 +1,6 @@
 import { IsEnum, IsString } from "class-validator";
 import { Keeper } from "./keeper.entity";
-import { PersonnelDto } from "src/personnel/personnel.dto";
+import { PersonnelDto } from "../personnel/personnel.dto";
 
 export class KeeperDto extends PersonnelDto {
   @IsString()

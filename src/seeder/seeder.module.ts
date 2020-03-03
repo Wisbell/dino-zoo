@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { SeederService } from './seeder.service';
 import { SeederController } from './seeder.controller';
-import { KeeperService } from 'src/keeper/keeper.service';
+import { KeeperService } from '../keeper/keeper.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { KeeperRepository } from 'src/keeper/keeper.repository';
-import { TrainerRepository } from 'src/trainer/trainer.repository';
-import { TrainerService } from 'src/trainer/trainer.service';
-import { AnimalService } from 'src/animal/animal.service';
-import { AnimalRepository } from 'src/animal/animal.repository';
+import { KeeperRepository } from '../keeper/keeper.repository';
+import { TrainerRepository } from '../trainer/trainer.repository';
+import { TrainerService } from '../trainer/trainer.service';
+import { AnimalService } from '../animal/animal.service';
+import { AnimalRepository } from '../animal/animal.repository';
 
 @Module({
   imports: [
