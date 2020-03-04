@@ -42,9 +42,12 @@ export class AnimalDto {
   @IsEnum(AnimalCategory)
   category: AnimalCategory;
 
+  @IsString()
+  trainerId: string;
+
   // keeper; // Add keeper ID or Keeper model here
 
-  static toAnimal(animalDto: AnimalDto) {
+  static toAnimal(animalDto: AnimalDto): Animal {
     const {
       name,
       species,

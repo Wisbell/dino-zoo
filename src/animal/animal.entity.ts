@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne } from 'typeorm';
 import { AnimalCategory } from './animal-category.enum';
+import { Trainer } from '../trainer/trainer.entity';
 
 @Entity()
 export class Animal extends BaseEntity{
@@ -26,6 +27,9 @@ export class Animal extends BaseEntity{
 
   @Column()
   category: AnimalCategory;
+
+  @ManyToOne(type => Trainer, trainer => trainer.animals)
+  trainer: Trainer;
 
   // keeper; // Add keeper ID or Keeper model here
 }

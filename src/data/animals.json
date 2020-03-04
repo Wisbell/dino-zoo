@@ -6,7 +6,8 @@
     "age": "3",
     "numberOfKills": "0",
     "category": "Small",
-    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/dinosaur-names-and-pictures-ankylosaurus-768x512.jpg"
+    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/dinosaur-names-and-pictures-ankylosaurus-768x512.jpg",
+    "trainerId": ""
   },
 
   {
@@ -16,7 +17,8 @@
     "age": "12",
     "numberOfKills": "1",
     "category": "Large",
-    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/triceratops-768x512.jpg"
+    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/triceratops-768x512.jpg",
+    "trainerId": ""
   },
 
   {
@@ -26,7 +28,8 @@
     "age": "34",
     "numberOfKills": "99",
     "category": "Large",
-    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/tyrannosaurus-rex-768x512.jpg"
+    "imageUrl": "https://www.activewild.com/wp-content/uploads/2016/08/tyrannosaurus-rex-768x512.jpg",
+    "trainerId": ""
   },
 
   {
@@ -36,6 +39,7 @@
     "age": "66",
     "numberOfKills": "489",
     "category": "Medium",
-    "imageUrl": "https://www.activewild.com/wp-content/uploads/2018/12/Velociraptor-2.jpg"
+    "imageUrl": "https://www.activewild.com/wp-content/uploads/2018/12/Velociraptor-2.jpg",
+    "trainerId": ""
   }
 ]

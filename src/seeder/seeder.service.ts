@@ -46,7 +46,7 @@ export class SeederService {
   seedAnimals() {
     animalData.forEach(async animal => { // Animal
       const { name, species, gender, age,
-        numberOfKills, imageUrl, category
+        numberOfKills, imageUrl, category,
       } = animal;
 
       await this.animalService.create(
@@ -60,7 +60,7 @@ export class SeederService {
   async deleteAnimals() {
     const allAnimals = await this.animalService.getAll();
 
-    allAnimals.forEach(async animal => { // Keeper
+    allAnimals.forEach(async animal => { // Animal
       await this.animalService.delete(animal.id.toString());
     });
   }
