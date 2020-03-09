@@ -65,3 +65,4 @@ $ npm run sass:watch
 
 - Add image link validation in create/edit form
 
+- TODO: When deleting check if data exists first otherwise error will occur
