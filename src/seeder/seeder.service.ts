@@ -6,6 +6,9 @@ import * as animalData from '../data/animals.json';
 import { TrainerService } from '../trainer/trainer.service';
 import { AnimalService } from '../animal/animal.service';
 import { AnimalDto } from '../animal/animal.dto';
+import { getConnection } from 'typeorm';
+import { Animal } from '../animal/animal.entity';
+import { Trainer } from '../trainer/trainer.entity';
 
 @Injectable()
 export class SeederService {
@@ -15,27 +18,36 @@ export class SeederService {
     private animalService: AnimalService
   ) {}
 
-  seedTrainers() {
-    trainerData.forEach(async trainer => { // Trainer
+  private seedTrainers(): void {
+    trainerData.forEach(async trainer => { // TrainerDto?
       await this.trainerService.create(trainer);
     });
   }
 
-  async deleteTrainers() {
-    const allTrainers = await this.trainerService.getAll();
+  private async deleteTrainers(): Promise<void> {
+    const allTrainers: Trainer[] = await this.trainerService.getAll();
 
-    allTrainers.forEach(async trainer => { // Trainer
+    allTrainers.forEach(async (trainer: Trainer) => {
       await this.trainerService.delete(trainer.id.toString());
     });
   }
 
-  seedKeepers() {
-    keeperData.forEach(async keeper => { // Keeper
+  // private async dropTrainerTable(): Promise<void> {
+  //   const queryRunner = await getConnection().createQueryRunner();
+  //   const hasTable = await queryRunner.hasTable('trainer');
+
+  //   if(hasTable) {
+  //     await queryRunner.dropTable('trainer');
+  //   }
+  // }
+
+  private seedKeepers(): void {
+    keeperData.forEach(async keeper => { // KeeperJSON
       await this.keeperService.create(keeper);
     });
   }
 
-  async deleteKeepers() {
+  private async deleteKeepers(): Promise<void> {
     const allKeepers = await this.keeperService.getAll();
 
     allKeepers.forEach(async keeper => { // Keeper
@@ -43,21 +55,61 @@ export class SeederService {
     });
   }
 
-  seedAnimals() {
-    animalData.forEach(async animal => { // Animal
-      const { name, species, gender, age,
-        numberOfKills, imageUrl, category,
-      } = animal;
+  // private async dropKeeperTable(): Promise<void> {
+  //   const queryRunner = await getConnection().createQueryRunner();
+  //   const hasTable = await queryRunner.hasTable('keeper');
 
-      await this.animalService.create(
-        new AnimalDto(
-          name, species, gender, age,
-          numberOfKills, imageUrl, category
-      ));
+  //   if(hasTable) {
+  //     await queryRunner.dropTable('keeper');
+  //   }
+  // }
+
+  private seedAnimals(): void {
+    const getCategory = new AnimalDto().getCategory;
+
+    animalData.forEach(async animalJSON => { // AnimalJSON
+      const { name, species, gender, age, numberOfKills,
+        imageUrl, category } = animalJSON;
+
+      const animal = {
+        name,
+        species,
+        gender,
+        age: parseInt(age) || null,
+        numberOfKills: parseInt(numberOfKills) || null,
+        imageUrl,
+        category: getCategory(category),
+        trainer: null
+      }
+
+      await getConnection()
+        .createQueryBuilder()
+        .insert()
+        .into(Animal)
+        .values(animal)
+        .execute();
+
+      // Add animal to database
+      // const animalId = await getConnection()
+      //   .createQueryBuilder()
+      //   .insert()
+      //   .into(Animal)
+      //   .values(animal)
+      //   .execute()
+      //   .then(data => {
+      //     return data.identifiers[0].id;
+      //   });
+
+      // Add relationship to trainer
+      // await getConnection()
+      //   .createQueryBuilder()
+      //   .relation(Animal, "trainer")
+      //   .of(animalId)
+      //   .set(trainerId);
     });
   }
 
-  async deleteAnimals() {
+  async deleteAnimals(): Promise<void> {
     const allAnimals = await this.animalService.getAll();
 
     allAnimals.forEach(async animal => { // Animal
@@ -65,4 +117,64 @@ export class SeederService {
     });
   }
 
+  // private async dropAnimalTable(): Promise<void> {
+  //   const queryRunner = await getConnection().createQueryRunner();
+  //   const hasTable = await queryRunner.hasTable('animal');
+
+  //   if(hasTable) {
+  //     await queryRunner.dropTable('animal');
+  //   }
+  // }
+
+  private async seedAll(): Promise<void> {
+    await this.seedTrainers();
+    await this.seedKeepers();
+    await this.seedAnimals();
+  }
+
+  private async deleteAll(): Promise<void> {
+    await this.deleteAnimals();
+    await this.deleteKeepers();
+    await this.deleteTrainers();
+  }
+
+  // private async dropAllTables(): Promise<void> {
+  //   await this.dropAnimalTable();
+  //   await this.dropTrainerTable();
+  //   await this.dropKeeperTable();
+  // }
+
+  async resetDatabase(): Promise<void> {
+    await this.deleteAll();
+    await this.resetAllTableSequences();
+    await this.seedAll();
+  }
+
+  async resetAllTableSequences(): Promise<void> {
+    const tableNames = await this.getAllTableNames();
+    tableNames.forEach( async (name) => await this.resetTableSequence(name) );
+  }
+
+
+  async resetTableSequence(tableName: string): Promise<void> {
+    return await getConnection()
+      .createEntityManager()
+      .query(`ALTER SEQUENCE ${tableName}_id_seq RESTART WITH 1`);
+  }
+
+  async getAllTableNames(): Promise<string[]> {
+    const tableNamesFromDB = await getConnection()
+      .createEntityManager()
+      .query(`SELECT table_name
+              FROM information_schema.tables
+              WHERE table_schema='public'
+              AND table_type='BASE TABLE';`);
+
+    const tableNames = tableNamesFromDB.map( (obj) => {
+      if(obj.table_name != 'migration')
+        return obj.table_name;
+    });
+
+    return tableNames.filter( name => name != null );
+  }
 }
