@@ -22,7 +22,11 @@
     "sass:build": "sass --no-source-map _sass/main.scss public/css/main.css",
     "sass:watch": "npm run sass:build -- --watch",
     "heroku-postbuild": "npm install --production --no-shrinkwrap && npm run build",
-    "heroku:logs": "heroku logs --tail -a dino-zoo"
+    "heroku:logs": "heroku logs --tail -a dino-zoo",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/config/typeorm.config.ts",
+    "typeorm:migration:generate": "npm run typeorm migration:generate -- -n",
+    "typeorm:migration:run": "npm run typeorm migration:run",
+    "typeorm:migration:revert": "npm run typeorm migration:revert"
   },
   "dependencies": {
     "@nestjs/common": "^6.10.14",
