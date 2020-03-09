@@ -1,16 +1,19 @@
 import { Animal } from "./animal.entity";
 import { AnimalCategory } from "./animal-category.enum";
 import { IsEnum, IsString } from "class-validator";
+import { Trainer } from "../trainer/trainer.entity";
 
 export class AnimalDto {
+  constructor()
   constructor(
-    name: string,
-    species: string,
-    gender: string,
-    age: string,
-    numberOfKills: string,
-    imageUrl: string,
-    category: string
+    name?: string,
+    species?: string,
+    gender?: string,
+    age?: string,
+    numberOfKills?: string,
+    imageUrl?: string,
+    category?: string,
+    trainerId?: string // TODO: try trainerId: string;
   ) {
     this.name = name;
     this.species = species;
@@ -19,6 +22,7 @@ export class AnimalDto {
     this.numberOfKills = numberOfKills;
     this.imageUrl = imageUrl;
     this.setCategory(category);
+    this.trainerId = trainerId;
   }
 
   @IsString()
@@ -42,8 +46,10 @@ export class AnimalDto {
   @IsEnum(AnimalCategory)
   category: AnimalCategory;
 
-  @IsString()
+  // @IsString()
   trainerId: string;
+
+  // trainer: Trainer;
 
   // keeper; // Add keeper ID or Keeper model here
 
@@ -55,7 +61,8 @@ export class AnimalDto {
       age,
       numberOfKills,
       imageUrl,
-      category
+      category,
+      trainerId
     } = animalDto;
 
     const animal = new Animal();
@@ -66,6 +73,7 @@ export class AnimalDto {
     animal.numberOfKills = parseInt(numberOfKills) || null;
     animal.imageUrl = imageUrl;
     animal.category = category;
+    animal.trainer; // TODO
     return animal;
   }
 
@@ -78,5 +86,16 @@ export class AnimalDto {
 
     else if (category === AnimalCategory.SMALL)
       this.category = AnimalCategory.SMALL;
+  }
+
+  getCategory(category: string): AnimalCategory {
+    if (category === AnimalCategory.LARGE)
+      return AnimalCategory.LARGE;
+
+    else if (category === AnimalCategory.MEDIUM)
+      return AnimalCategory.MEDIUM;
+
+    else if (category === AnimalCategory.SMALL)
+      return AnimalCategory.SMALL;
   }
 }
