@@ -15,7 +15,8 @@ const typeOrmConfig: TypeOrmModuleOptions = {
 
   // TESTING
   migrationsTableName: 'migration',
-  migrationsRun: true,
+  // migrationsRun: true,
+  migrationsRun: false,
   logging: true,
   logger: 'file',
   migrations: [`dist/migrations/**/*.{ts,js}`], // NOTE: Dist directory needed or error will be thrown
