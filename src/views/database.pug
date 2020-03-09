@@ -7,12 +7,16 @@ block content
         .content.has-text-centered
           h1.has-text-white #{hero_text}
         .buttons.is-centered
-          button.button.is-large.is-primary(onclick=`populate('keepers')`) Populate Keepers
-          button.button.is-large.is-warning.is-outlined(onclick=`clearTable('keepers')`) Clear All Keepers
-          button.button.is-large.is-link(onclick=`populate('trainers')`) Populate Trainers
-          button.button.is-large.is-warning.is-outlined(onclick=`clearTable('trainers')`) Clear All Trainers
-          button.button.is-large.is-info(onclick=`populate('animals')`) Populate Animals
-          button.button.is-large.is-warning.is-outlined(onclick=`clearTable('animals')`) Clear All Animals
+          //- NOTE: Keeping this elements just in case
+          //- button.button.is-large.is-primary(onclick=`populate('keepers')`) Populate Keepers
+          //- button.button.is-large.is-warning.is-outlined(onclick=`clearTable('keepers')`) Clear All Keepers
+          //- button.button.is-large.is-link(onclick=`populate('trainers')`) Populate Trainers
+          //- button.button.is-large.is-warning.is-outlined(onclick=`clearTable('trainers')`) Clear All Trainers
+          //- button.button.is-large.is-info(onclick=`populate('animals')`) Populate Animals
+          //- button.button.is-large.is-warning.is-outlined(onclick=`clearTable('animals')`) Clear All Animals
+          //- button.button.is-large.is-info(onclick=`populate('all')`) Populate All Tables
+          //- button.button.is-large.is-warning.is-outlined(onclick=`clearTable('all')`) Clear All Tables
+          button.button.is-large.is-warning(onclick=`resetDatabase()`) Reset Database
 
 block scripts
   script(type='text/javascript' src='/js/database.view.js')
