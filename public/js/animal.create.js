@@ -8,6 +8,7 @@ function createAnimal() {
   const numberOfKillsInput = dinoForm.querySelector('input[name=numberOfKills]');
   const imageUrlInput = dinoForm.querySelector('input[name=imageUrl]');
   const categorySelect = dinoForm.querySelector('#category');
+  const trainerSelect = dinoForm.querySelector('#trainer');
 
   const newAnimal = {
     name: nameInput.value,
@@ -16,8 +17,12 @@ function createAnimal() {
     age: ageInput.value,
     numberOfKills: numberOfKillsInput.value,
     imageUrl: imageUrlInput.value,
-    category: categorySelect.value
+    category: categorySelect.value,
+    trainerId: setTrainer(trainerSelect.value)
   }
+
+  console.log('sending animal');
+  console.log(JSON.stringify(newAnimal));
 
   fetch('/animals', {
     method: 'POST',
@@ -34,10 +39,17 @@ function createAnimal() {
 
     if (responseHasErrorStatusCode)
       handleHttpError(response); // utilities.js
-    else
-      goTo('/animals'); // utilities.js
+    // else
+      // goTo('/animals'); // utilities.js
   })
   .catch((error) => {
     console.warn('Error:', error);
   });
+}
+
+function setTrainer(trainerValue) {
+  if (trainerValue === 'none')
+    return null;
+  else
+    return trainerValue;
 }
