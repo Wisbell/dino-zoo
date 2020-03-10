@@ -2,11 +2,13 @@ import { Controller, Get, Render, Post, Body, Put, Param, Delete } from '@nestjs
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './animal.dto';
 import { AnimalCategory } from './animal-category.enum';
+import { TrainerService } from '../trainer/trainer.service';
 
 @Controller('animals')
 export class AnimalController {
   constructor(
-    private animalService: AnimalService
+    private animalService: AnimalService,
+    private trainerService: TrainerService,
   ) {}
 
   @Get()
@@ -21,10 +23,11 @@ export class AnimalController {
 
   @Get('create')
   @Render('animal.create.pug')
-  animalsCreate() {
+  async animalsCreate() {
     return {
       title: 'JP - Animal Management',
-      animal_categories: AnimalCategory
+      animal_categories: AnimalCategory,
+      trainers: await this.trainerService.getAll()
     };
   }
 
