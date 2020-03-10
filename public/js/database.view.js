@@ -88,7 +88,7 @@ async function resetDatabase() {
 
       await delay(1500); // utilities.js
 
-      // goTo('/'); // utilities.js
+      goTo('/'); // utilities.js
     }
   })
   .catch((error) => {
