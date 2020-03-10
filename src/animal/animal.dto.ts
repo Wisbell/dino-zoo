@@ -53,7 +53,7 @@ export class AnimalDto {
 
   // keeper; // Add keeper ID or Keeper model here
 
-  static toAnimal(animalDto: AnimalDto): Animal {
+  static toAnimal(animalDto: AnimalDto, trainer: Trainer): Animal {
     const {
       name,
       species,
@@ -73,7 +73,7 @@ export class AnimalDto {
     animal.numberOfKills = parseInt(numberOfKills) || null;
     animal.imageUrl = imageUrl;
     animal.category = category;
-    animal.trainer; // TODO
+    animal.trainer = trainer;
     return animal;
   }
 
