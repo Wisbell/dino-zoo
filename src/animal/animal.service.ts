@@ -14,12 +14,49 @@ export class AnimalService {
     private readonly trainerService: TrainerService,
   ) {}
 
-  getAll(): Promise<Animal[]> {
-    return this.animalRepository.find();
+  async getAll(): Promise<Animal[]> {
+    return this.animalRepository.find({ loadRelationIds: true });
+  }
+
+  async getAllDtos(): Promise<AnimalDto[]> {
+    let animals = await this.animalRepository.find({ loadRelationIds: true });
+
+    const animalDtos = animals.map(
+      (animal) => {
+        return new AnimalDto(
+          animal.id ? animal.id.toString() : null,
+          animal.name,
+          animal.species,
+          animal.gender,
+          animal.age ? animal.age.toString() : null,
+          animal.numberOfKills ? animal.numberOfKills.toString() : null,
+          animal.imageUrl,
+          animal.category,
+          AnimalDto.parseTrainerId(animal.trainer)
+        )
+      });
+
+    return animalDtos;
   }
 
   getOne(id: string): Promise<Animal> {
     return this.animalRepository.findOne(id);
+  }
+
+  async getOneDto(id: string): Promise<AnimalDto> {
+    const animal = await this.animalRepository.findOne(id, { loadRelationIds: true });
+
+    return new AnimalDto(
+          animal.id.toString(),
+          animal.name,
+          animal.species,
+          animal.gender,
+          animal.age ? animal.age.toString() : null,
+          animal.numberOfKills ? animal.numberOfKills.toString() : null,
+          animal.imageUrl,
+          animal.category,
+          AnimalDto.parseTrainerId(animal.trainer)
+        )
   }
 
   async create(newAnimal: AnimalDto): Promise<Animal> {
@@ -32,8 +69,13 @@ export class AnimalService {
   }
 
   async update(id:string, updatedAnimalDto: AnimalDto): Promise<Animal> {
+    let trainer: Trainer = null;
+
+    if (updatedAnimalDto.trainerId)
+      trainer = await this.trainerService.getOne(updatedAnimalDto.trainerId);
+
     let existingAnimal = await this.getOne(id);
-    return this.animalRepository.updateAnimal(existingAnimal, updatedAnimalDto);
+    return this.animalRepository.updateAnimal(existingAnimal, updatedAnimalDto, trainer);
   }
 
   async delete(id: string): Promise<void> {
