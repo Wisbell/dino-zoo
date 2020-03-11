@@ -10,8 +10,9 @@ export class AnimalRepository extends Repository<Animal> {
     return animal.save();
   }
 
-  async updateAnimal(existingAnimal: Animal, updatedAnimalDto: AnimalDto) {
-    const updatedAnimal = AnimalDto.toAnimal(updatedAnimalDto, null); // TODO: FIX THIS
+  async updateAnimal(existingAnimal: Animal, updatedAnimalDto: AnimalDto, trainer: Trainer) {
+    const updatedAnimal = AnimalDto.toAnimal(updatedAnimalDto, trainer);
+
     existingAnimal.name = updatedAnimal.name;
     existingAnimal.species = updatedAnimal.species;
     existingAnimal.gender = updatedAnimal.gender;
@@ -19,6 +20,8 @@ export class AnimalRepository extends Repository<Animal> {
     existingAnimal.numberOfKills = updatedAnimal.numberOfKills;
     existingAnimal.imageUrl = updatedAnimal.imageUrl;
     existingAnimal.category = updatedAnimal.category;
+    existingAnimal.trainer = trainer;
+
     return this.save(existingAnimal);
   }
 }
