@@ -59,6 +59,17 @@ block content
                         option(value=`${value}` selected) #{value}
                       else
                         option(value=`${value}`) #{value}
+            .field
+              label.label.has-text-white Trainer
+              .control
+                .select
+                  select#trainer
+                    option(value='none') Add Trainer?
+                    each trainer in trainers
+                      if (animal.trainerId === (trainer.id))
+                        option(value=`${animal.trainerId}` selected) #{trainer.firstName} #{trainer.lastName}
+                      else
+                        option(value=`${trainer.id}`) #{trainer.firstName} #{trainer.lastName}
             .field.is-grouped
               .control
                 button.button.is-link(onclick='updateAnimal()') Submit
