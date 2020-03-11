@@ -1,4 +1,4 @@
-import { Injectable, NotImplementedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { KeeperService } from '../keeper/keeper.service';
 import * as keeperData from '../data/keepers.json';
 import * as trainerData from '../data/trainers.json';
@@ -7,7 +7,6 @@ import { TrainerService } from '../trainer/trainer.service';
 import { AnimalService } from '../animal/animal.service';
 import { AnimalDto } from '../animal/animal.dto';
 import { getConnection } from 'typeorm';
-import { Animal } from '../animal/animal.entity';
 import { Trainer } from '../trainer/trainer.entity';
 
 @Injectable()
@@ -19,8 +18,28 @@ export class SeederService {
   ) {}
 
   private seedTrainers(): void {
-    trainerData.forEach(async trainer => { // TrainerDto?
-      await this.trainerService.create(trainer);
+    trainerData.forEach(async (trainerJSON) => { // TrainerDto?
+
+      const { firstName, lastName, gender, age,
+        dateOfHire, trickExpertise, imageUrl } = trainerJSON;
+
+      const trainer = {
+        firstName,
+        lastName,
+        gender,
+        age: parseInt(age) || null,
+        dateOfHire,
+        trickExpertise,
+        imageUrl
+      }
+
+      await getConnection()
+        .createQueryBuilder()
+        .insert()
+        .into(Trainer)
+        .values(trainer)
+        .execute();
+
     });
   }
 
@@ -31,15 +50,6 @@ export class SeederService {
       await this.trainerService.delete(trainer.id.toString());
     });
   }
-
-  // private async dropTrainerTable(): Promise<void> {
-  //   const queryRunner = await getConnection().createQueryRunner();
-  //   const hasTable = await queryRunner.hasTable('trainer');
-
-  //   if(hasTable) {
-  //     await queryRunner.dropTable('trainer');
-  //   }
-  // }
 
   private seedKeepers(): void {
     keeperData.forEach(async keeper => { // KeeperJSON
@@ -55,15 +65,6 @@ export class SeederService {
     });
   }
 
-  // private async dropKeeperTable(): Promise<void> {
-  //   const queryRunner = await getConnection().createQueryRunner();
-  //   const hasTable = await queryRunner.hasTable('keeper');
-
-  //   if(hasTable) {
-  //     await queryRunner.dropTable('keeper');
-  //   }
-  // }
-
   private seedAnimals(): void {
     const getCategory = new AnimalDto().getCategory;
 
@@ -71,41 +72,19 @@ export class SeederService {
       const { name, species, gender, age, numberOfKills,
         imageUrl, category } = animalJSON;
 
-      const animal = {
+      const animal = new AnimalDto(
+        null,
         name,
         species,
         gender,
-        age: parseInt(age) || null,
-        numberOfKills: parseInt(numberOfKills) || null,
+        age,
+        numberOfKills,
         imageUrl,
-        category: getCategory(category),
-        trainer: null
-      }
+        getCategory(category),
+        null
+      )
 
-      await getConnection()
-        .createQueryBuilder()
-        .insert()
-        .into(Animal)
-        .values(animal)
-        .execute();
-
-      // Add animal to database
-      // const animalId = await getConnection()
-      //   .createQueryBuilder()
-      //   .insert()
-      //   .into(Animal)
-      //   .values(animal)
-      //   .execute()
-      //   .then(data => {
-      //     return data.identifiers[0].id;
-      //   });
-
-      // Add relationship to trainer
-      // await getConnection()
-      //   .createQueryBuilder()
-      //   .relation(Animal, "trainer")
-      //   .of(animalId)
-      //   .set(trainerId);
+      await this.animalService.create(animal);
     });
   }
 
@@ -116,15 +95,6 @@ export class SeederService {
       await this.animalService.delete(animal.id.toString());
     });
   }
-
-  // private async dropAnimalTable(): Promise<void> {
-  //   const queryRunner = await getConnection().createQueryRunner();
-  //   const hasTable = await queryRunner.hasTable('animal');
-
-  //   if(hasTable) {
-  //     await queryRunner.dropTable('animal');
-  //   }
-  // }
 
   private async seedAll(): Promise<void> {
     await this.seedTrainers();
@@ -137,12 +107,6 @@ export class SeederService {
     await this.deleteKeepers();
     await this.deleteTrainers();
   }
-
-  // private async dropAllTables(): Promise<void> {
-  //   await this.dropAnimalTable();
-  //   await this.dropTrainerTable();
-  //   await this.dropKeeperTable();
-  // }
 
   async resetDatabase(): Promise<void> {
     await this.deleteAll();
