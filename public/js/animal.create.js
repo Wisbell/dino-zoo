@@ -11,6 +11,7 @@ function createAnimal() {
   const trainerSelect = dinoForm.querySelector('#trainer');
 
   const newAnimal = {
+    id: '',
     name: nameInput.value,
     species: speciesInput.value,
     gender: genderSelect.value,
@@ -20,9 +21,6 @@ function createAnimal() {
     category: categorySelect.value,
     trainerId: setTrainer(trainerSelect.value)
   }
-
-  console.log('sending animal');
-  console.log(JSON.stringify(newAnimal));
 
   fetch('/animals', {
     method: 'POST',
@@ -39,8 +37,8 @@ function createAnimal() {
 
     if (responseHasErrorStatusCode)
       handleHttpError(response); // utilities.js
-    // else
-      // goTo('/animals'); // utilities.js
+    else
+      goTo('/animals'); // utilities.js
   })
   .catch((error) => {
     console.warn('Error:', error);
