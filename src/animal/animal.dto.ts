@@ -1,11 +1,23 @@
 import { Animal } from "./animal.entity";
 import { AnimalCategory } from "./animal-category.enum";
-import { IsEnum, IsString } from "class-validator";
+import { IsEnum, IsString, IsEmpty, ValidateIf } from "class-validator";
 import { Trainer } from "../trainer/trainer.entity";
 
 export class AnimalDto {
   constructor()
   constructor(
+    id: string,
+    name: string,
+    species: string,
+    gender: string,
+    age: string,
+    numberOfKills: string,
+    imageUrl: string,
+    category: string,
+    trainerId: string
+  )
+  constructor(
+    id?: string,
     name?: string,
     species?: string,
     gender?: string,
@@ -13,8 +25,9 @@ export class AnimalDto {
     numberOfKills?: string,
     imageUrl?: string,
     category?: string,
-    trainerId?: string // TODO: try trainerId: string;
+    trainerId?: string
   ) {
+    this.id = id;
     this.name = name;
     this.species = species;
     this.gender = gender;
@@ -24,6 +37,9 @@ export class AnimalDto {
     this.setCategory(category);
     this.trainerId = trainerId;
   }
+
+  @IsString()
+  id: string;
 
   @IsString()
   name: string;
@@ -46,15 +62,15 @@ export class AnimalDto {
   @IsEnum(AnimalCategory)
   category: AnimalCategory;
 
-  // @IsString()
+  @ValidateIf(trainerId => trainerId === null)
+  @IsString()
   trainerId: string;
-
-  // trainer: Trainer;
 
   // keeper; // Add keeper ID or Keeper model here
 
   static toAnimal(animalDto: AnimalDto, trainer: Trainer): Animal {
     const {
+      id,
       name,
       species,
       gender,
@@ -66,6 +82,7 @@ export class AnimalDto {
     } = animalDto;
 
     const animal = new Animal();
+    animal.id = parseInt(id) || null;
     animal.name = name;
     animal.species = species;
     animal.gender = gender;
@@ -97,5 +114,14 @@ export class AnimalDto {
 
     else if (category === AnimalCategory.SMALL)
       return AnimalCategory.SMALL;
+  }
+
+  static parseTrainerId(trainer: Trainer | number | string): string {
+    if (trainer instanceof Trainer)
+      return trainer.id.toString();
+    else if (typeof trainer === 'number')
+      return trainer.toString();
+    else
+      return trainer;
   }
 }
