@@ -17,7 +17,7 @@ export class AnimalController {
     return {
       title: 'JP - Animal Management',
       hero_text: 'Animal Management',
-      animals: await this.animalService.getAll()
+      animals: await this.animalService.getAllDtos()
     };
   }
 
@@ -27,7 +27,7 @@ export class AnimalController {
     return {
       title: 'JP - Animal Management',
       animal_categories: AnimalCategory,
-      trainers: await this.trainerService.getAll()
+      trainers: await this.trainerService.getAllDtos()
     };
   }
 
@@ -36,8 +36,9 @@ export class AnimalController {
   async animalsEdit(@Param('id') id: string) {
     return {
       title: 'JP - Animal Management',
-      animal: await this.animalService.getOne(id),
-      animal_categories: AnimalCategory
+      animal: await this.animalService.getOneDto(id),
+      animal_categories: AnimalCategory,
+      trainers: await this.trainerService.getAllDtos()
     };
   }
 
