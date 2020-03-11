@@ -28,7 +28,7 @@ export class Animal extends BaseEntity{
   @Column()
   category: AnimalCategory;
 
-  @ManyToOne(type => Trainer, trainer => trainer.animals)
+  @ManyToOne(type => Trainer, trainer => trainer.animals, { onDelete: 'CASCADE' })
   trainer: Trainer;
 
   // keeper; // Add keeper ID or Keeper model here
