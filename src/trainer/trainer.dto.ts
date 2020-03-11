@@ -2,6 +2,40 @@ import { IsEnum, IsString } from "class-validator";
 import { Trainer } from "./trainer.entity";
 
 export class TrainerDto {
+  constructor()
+  constructor(
+    id: string,
+    firstName: string,
+    lastName: string,
+    gender: string,
+    age: string,
+    dateOfHire: string,
+    trickExpertise: string,
+    imageUrl: string
+  )
+  constructor(
+    id?: string,
+    firstName?: string,
+    lastName?: string,
+    gender?: string,
+    age?: string,
+    dateOfHire?: string,
+    trickExpertise?: string,
+    imageUrl?: string
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.age = age;
+    this.dateOfHire = dateOfHire;
+    this.trickExpertise = trickExpertise;
+    this.imageUrl = imageUrl;
+  }
+
+  @IsString()
+  id: string;
+
   @IsString()
   firstName: string;
 
