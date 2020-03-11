@@ -15,6 +15,26 @@ export class TrainerService {
     return this.trainerRepository.find();
   }
 
+  async getAllDtos(): Promise<TrainerDto[]> {
+    let trainers = await this.trainerRepository.find();
+
+    const trainerDtos = trainers.map(
+      (trainer) => {
+        return new TrainerDto(
+          trainer.id ? trainer.id.toString() : null,
+          trainer.firstName,
+          trainer.lastName,
+          trainer.gender,
+          trainer.age ? trainer.age.toString() : null,
+          trainer.dateOfHire,
+          trainer.trickExpertise,
+          trainer.imageUrl
+        )
+      });
+
+    return trainerDtos;
+  }
+
   getOne(id: string): Promise<Trainer> {
     return this.trainerRepository.findOne(id);
   }
