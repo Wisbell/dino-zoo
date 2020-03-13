@@ -8,6 +8,8 @@ import { AnimalService } from '../animal/animal.service';
 import { AnimalDto } from '../animal/animal.dto';
 import { getConnection } from 'typeorm';
 import { Trainer } from '../trainer/trainer.entity';
+import { Keeper } from '../keeper/keeper.entity';
+import { Animal } from '../animal/animal.entity';
 
 @Injectable()
 export class SeederService {
@@ -18,7 +20,7 @@ export class SeederService {
   ) {}
 
   private seedTrainers(): void {
-    trainerData.forEach(async (trainerJSON) => { // TrainerDto?
+    trainerData.forEach(async (trainerJSON) => { // TrainerJSON
 
       const { firstName, lastName, gender, age,
         dateOfHire, trickExpertise, imageUrl } = trainerJSON;
@@ -39,7 +41,6 @@ export class SeederService {
         .into(Trainer)
         .values(trainer)
         .execute();
-
     });
   }
 
@@ -52,8 +53,26 @@ export class SeederService {
   }
 
   private seedKeepers(): void {
-    keeperData.forEach(async keeper => { // KeeperJSON
-      await this.keeperService.create(keeper);
+    keeperData.forEach(async keeperJSON => { // KeeperJSON
+      const { firstName, lastName, gender, age,
+        dateOfHire, imageUrl, speciality } = keeperJSON;
+
+      const keeper = {
+        firstName,
+        lastName,
+        gender,
+        age: parseInt(age) || null,
+        dateOfHire,
+        imageUrl,
+        speciality
+      }
+
+      await getConnection()
+        .createQueryBuilder()
+        .insert()
+        .into(Keeper)
+        .values(keeper)
+        .execute();
     });
   }
 
@@ -66,7 +85,7 @@ export class SeederService {
   }
 
   private seedAnimals(): void {
-    const getCategory = new AnimalDto().getCategory;
+    const getCategory: Function = new AnimalDto().getCategory;
 
     animalData.forEach(async animalJSON => { // AnimalJSON
       const { name, species, gender, age, numberOfKills,
@@ -81,6 +100,7 @@ export class SeederService {
         numberOfKills,
         imageUrl,
         getCategory(category),
+        null,
         null
       )
 
@@ -91,7 +111,7 @@ export class SeederService {
   async deleteAnimals(): Promise<void> {
     const allAnimals = await this.animalService.getAll();
 
-    allAnimals.forEach(async animal => { // Animal
+    allAnimals.forEach(async (animal: Animal) => {
       await this.animalService.delete(animal.id.toString());
     });
   }
