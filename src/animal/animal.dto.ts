@@ -1,7 +1,8 @@
 import { Animal } from "./animal.entity";
 import { AnimalCategory } from "./animal-category.enum";
-import { IsEnum, IsString, IsEmpty, ValidateIf } from "class-validator";
+import { IsEnum, IsString, IsEmpty, ValidateIf, IsArray } from "class-validator";
 import { Trainer } from "../trainer/trainer.entity";
+import { Keeper } from "../keeper/keeper.entity";
 
 export class AnimalDto {
   constructor()
@@ -14,7 +15,8 @@ export class AnimalDto {
     numberOfKills: string,
     imageUrl: string,
     category: string,
-    trainerId: string
+    trainerId: string,
+    keeperIds: string[]
   )
   constructor(
     id?: string,
@@ -25,7 +27,8 @@ export class AnimalDto {
     numberOfKills?: string,
     imageUrl?: string,
     category?: string,
-    trainerId?: string
+    trainerId?: string,
+    keeperIds?: string[]
   ) {
     this.id = id;
     this.name = name;
@@ -36,6 +39,7 @@ export class AnimalDto {
     this.imageUrl = imageUrl;
     this.setCategory(category);
     this.trainerId = trainerId;
+    this.keeperIds = keeperIds
   }
 
   @IsString()
@@ -66,9 +70,11 @@ export class AnimalDto {
   @IsString()
   trainerId: string;
 
-  // keeper; // Add keeper ID or Keeper model here
+  @ValidateIf(keeperIds => keeperIds === null)
+  @IsArray()
+  keeperIds: string[];
 
-  static toAnimal(animalDto: AnimalDto, trainer: Trainer): Animal {
+  static toAnimal(animalDto: AnimalDto, trainer: Trainer, keepers: Keeper[]): Animal {
     const {
       id,
       name,
@@ -78,7 +84,8 @@ export class AnimalDto {
       numberOfKills,
       imageUrl,
       category,
-      trainerId
+      trainerId,
+      keeperIds
     } = animalDto;
 
     const animal = new Animal();
@@ -91,6 +98,7 @@ export class AnimalDto {
     animal.imageUrl = imageUrl;
     animal.category = category;
     animal.trainer = trainer;
+    animal.keepers = keepers;
     return animal;
   }
 
@@ -123,5 +131,18 @@ export class AnimalDto {
       return trainer.toString();
     else
       return trainer;
+  }
+
+  static parseKeeperIds(keeperIds: Keeper[] | number[] | string[]): string[] {
+    const keeperIdArray = keeperIds as [];
+
+    return keeperIdArray.map( (keeper: Keeper | number | string) => {
+      if (keeper instanceof Keeper)
+        return keeper.id.toString();
+      else if (typeof keeper === 'number')
+        return keeper.toString();
+      else
+        return keeper;
+    });
   }
 }
