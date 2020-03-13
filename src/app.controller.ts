@@ -20,4 +20,13 @@ export class AppController {
       hero_text: 'Database Modification'
     };
   }
+
+  @Get('about')
+  @Render('about')
+  about() {
+    return {
+      title: 'Welcome to Jurassic Park!',
+      hero_text: 'About'
+    };
+  }
 }
