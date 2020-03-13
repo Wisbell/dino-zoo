@@ -11,6 +11,7 @@ function updateTrainer() {
   const trickExpertiseInput = trainerForm.querySelector('input[name=trickExpertise]');
 
   const updatedTrainer = {
+    id: idInput.value,
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     gender: genderSelect.value,
