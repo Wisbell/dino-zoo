@@ -1,4 +1,4 @@
-import { IsEnum, IsString } from "class-validator";
+import { IsString } from "class-validator";
 import { Trainer } from "./trainer.entity";
 
 export class TrainerDto {
@@ -57,10 +57,9 @@ export class TrainerDto {
   @IsString()
   imageUrl: string;
 
-  // keeper; // Add keeper ID or Keeper model here
-
   static toTrainer(trainerDto: TrainerDto) {
     const {
+      id,
       firstName,
       lastName,
       gender,
@@ -71,6 +70,7 @@ export class TrainerDto {
     } = trainerDto;
 
     const trainer = new Trainer();
+    trainer.id = parseInt(id) || null;
     trainer.firstName = firstName;
     trainer.lastName = lastName;
     trainer.gender = gender;
