@@ -15,6 +15,26 @@ export class KeeperService {
     return this.keeperRepository.find();
   }
 
+  async getAllDtos(): Promise<KeeperDto[]> {
+    let trainers = await this.keeperRepository.find();
+
+    const trainerDtos = trainers.map(
+      (keeper) => {
+        return new KeeperDto(
+          keeper.id ? keeper.id.toString() : null,
+          keeper.firstName,
+          keeper.lastName,
+          keeper.gender,
+          keeper.age ? keeper.age.toString() : null,
+          keeper.dateOfHire,
+          keeper.imageUrl,
+          keeper.speciality
+        )
+      });
+
+    return trainerDtos;
+  }
+
   getOne(id: string): Promise<Keeper> {
     return this.keeperRepository.findOne(id);
   }

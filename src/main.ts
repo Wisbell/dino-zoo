@@ -19,6 +19,10 @@ async function bootstrap() {
     res.sendFile(join(__dirname, '..', 'node_modules/bulma-toast/dist/bulma-toast.min.js'));
   });
 
+  expressInstance.get('/css/bulma-tooltip.min.css', function(req, res) {
+    res.sendFile(join(__dirname, '..', 'node_modules/bulma-tooltip/dist/css/bulma-tooltip.min.css'));
+  });
+
   expressInstance.get('/css/animate.min.css', function(req, res) {
     res.sendFile(join(__dirname, '..', 'node_modules/animate.css/animate.min.css'));
   });

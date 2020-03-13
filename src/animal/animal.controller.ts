@@ -2,11 +2,15 @@ import { Controller, Get, Render, Post, Body, Put, Param, Delete } from '@nestjs
 import { AnimalService } from './animal.service';
 import { AnimalDto } from './animal.dto';
 import { AnimalCategory } from './animal-category.enum';
+import { TrainerService } from '../trainer/trainer.service';
+import { KeeperService } from '../keeper/keeper.service';
 
 @Controller('animals')
 export class AnimalController {
   constructor(
-    private animalService: AnimalService
+    private animalService: AnimalService,
+    private trainerService: TrainerService,
+    private keeperService: KeeperService
   ) {}
 
   @Get()
@@ -15,16 +19,18 @@ export class AnimalController {
     return {
       title: 'JP - Animal Management',
       hero_text: 'Animal Management',
-      animals: await this.animalService.getAll()
+      animals: await this.animalService.getAllDtos()
     };
   }
 
   @Get('create')
   @Render('animal.create.pug')
-  animalsCreate() {
+  async animalsCreate() {
     return {
       title: 'JP - Animal Management',
-      animal_categories: AnimalCategory
+      animal_categories: AnimalCategory,
+      trainers: await this.trainerService.getAllDtos(),
+      keepers: await this.keeperService.getAllDtos()
     };
   }
 
@@ -33,8 +39,10 @@ export class AnimalController {
   async animalsEdit(@Param('id') id: string) {
     return {
       title: 'JP - Animal Management',
-      animal: await this.animalService.getOne(id),
-      animal_categories: AnimalCategory
+      animal: await this.animalService.getOneDto(id),
+      animal_categories: AnimalCategory,
+      trainers: await this.trainerService.getAllDtos(),
+      keepers: await this.keeperService.getAllDtos()
     };
   }
 

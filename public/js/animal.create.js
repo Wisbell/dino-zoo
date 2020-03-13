@@ -8,15 +8,19 @@ function createAnimal() {
   const numberOfKillsInput = dinoForm.querySelector('input[name=numberOfKills]');
   const imageUrlInput = dinoForm.querySelector('input[name=imageUrl]');
   const categorySelect = dinoForm.querySelector('#category');
+  const trainerSelect = dinoForm.querySelector('#trainer');
 
   const newAnimal = {
+    id: '',
     name: nameInput.value,
     species: speciesInput.value,
     gender: genderSelect.value,
     age: ageInput.value,
     numberOfKills: numberOfKillsInput.value,
     imageUrl: imageUrlInput.value,
-    category: categorySelect.value
+    category: categorySelect.value,
+    trainerId: setTrainer(trainerSelect.value),
+    keeperIds: getKeeperCheckboxValues()
   }
 
   fetch('/animals', {
@@ -40,4 +44,28 @@ function createAnimal() {
   .catch((error) => {
     console.warn('Error:', error);
   });
+}
+
+function setTrainer(trainerValue) {
+  if (!trainerValue)
+    return null;
+  else
+    return trainerValue;
+}
+
+// Return array of strings or null
+function getKeeperCheckboxValues() {
+  const checkboxElements = document.querySelectorAll('input[id^="keeper"]');
+  const checkedBoxes = [];
+
+  checkboxElements.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkedBoxes.push(checkbox.value);
+    }
+  });
+
+  if (checkedBoxes.length > 0)
+    return checkedBoxes;
+  else
+    return null;
 }

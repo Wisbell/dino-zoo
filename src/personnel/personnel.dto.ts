@@ -1,6 +1,9 @@
 import { IsString } from "class-validator";
 
-export class PersonnelDto {
+export abstract class PersonnelDto {
+  @IsString()
+  id: string;
+
   @IsString()
   firstName: string;
 

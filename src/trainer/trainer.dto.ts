@@ -1,7 +1,41 @@
-import { IsEnum, IsString } from "class-validator";
+import { IsString } from "class-validator";
 import { Trainer } from "./trainer.entity";
 
 export class TrainerDto {
+  constructor()
+  constructor(
+    id: string,
+    firstName: string,
+    lastName: string,
+    gender: string,
+    age: string,
+    dateOfHire: string,
+    trickExpertise: string,
+    imageUrl: string
+  )
+  constructor(
+    id?: string,
+    firstName?: string,
+    lastName?: string,
+    gender?: string,
+    age?: string,
+    dateOfHire?: string,
+    trickExpertise?: string,
+    imageUrl?: string
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.age = age;
+    this.dateOfHire = dateOfHire;
+    this.trickExpertise = trickExpertise;
+    this.imageUrl = imageUrl;
+  }
+
+  @IsString()
+  id: string;
+
   @IsString()
   firstName: string;
 
@@ -23,10 +57,9 @@ export class TrainerDto {
   @IsString()
   imageUrl: string;
 
-  // keeper; // Add keeper ID or Keeper model here
-
   static toTrainer(trainerDto: TrainerDto) {
     const {
+      id,
       firstName,
       lastName,
       gender,
@@ -37,6 +70,7 @@ export class TrainerDto {
     } = trainerDto;
 
     const trainer = new Trainer();
+    trainer.id = parseInt(id) || null;
     trainer.firstName = firstName;
     trainer.lastName = lastName;
     trainer.gender = gender;
