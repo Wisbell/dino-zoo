@@ -64,12 +64,25 @@ block content
               .control
                 .select
                   select#trainer
-                    option(value='none') Add Trainer?
+                    option(value='') Add Trainer?
                     each trainer in trainers
                       if (animal.trainerId === (trainer.id))
                         option(value=`${animal.trainerId}` selected) #{trainer.firstName} #{trainer.lastName}
                       else
                         option(value=`${trainer.id}`) #{trainer.firstName} #{trainer.lastName}
+            .field
+              label.label.has-text-white.is-medium Keepers
+              each keeper in keepers
+                span.has-tooltip-multiline(data-tooltip=`Speciality: ${keeper.speciality}`)
+                  if(animal.keeperIds)
+                    if (animal.keeperIds.includes(keeper.id))
+                      input.is-checkradio(id=`keeper-${keeper.id}` type='checkbox' name=`keeper-${keeper.id}` value=`${keeper.id}` checked)
+                    else
+                      input.is-checkradio(id=`keeper-${keeper.id}` type='checkbox' name=`keeper-${keeper.id}` value=`${keeper.id}`)
+                  else
+                    input.is-checkradio(id=`keeper-${keeper.id}` type='checkbox' name=`keeper-${keeper.id}` value=`${keeper.id}`)
+                  label.has-text-white(for=`keeper-${keeper.id}`) #{keeper.firstName} #{keeper.lastName}
+                  br
             .field.is-grouped
               .control
                 button.button.is-link(onclick='updateAnimal()') Submit

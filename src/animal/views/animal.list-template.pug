@@ -15,6 +15,7 @@
         div Number of Kills: #{animal.numberOfKills}
         div Category: #{animal.category}
         div TrainerId: #{animal.trainerId}
+        div Keeper Id's: #{animal.keeperIds.join(', ')}
     footer.card-footer
       a.card-footer-item(href=`/animals/edit/${animal.id}`) Edit
       a.card-footer-item(onclick=`deleteAnimal(${animal.id})`) Delete

@@ -45,9 +45,16 @@ block content
               .control
                 .select
                   select#trainer
-                    option(value='none') Add Trainer?
+                    option(value='') Add Trainer?
                     each trainer in trainers
                       option(value=`${trainer.id}`) #{trainer.firstName} #{trainer.lastName}
+            .field
+              label.label.has-text-white.is-medium Keepers
+              each keeper in keepers
+                span.has-tooltip-multiline(data-tooltip=`Speciality: ${keeper.speciality}`)
+                  input.is-checkradio(id=`keeper-${keeper.id}` type='checkbox' name=`keeper-${keeper.id}` value=`${keeper.id}`)
+                  label.has-text-white(for=`keeper-${keeper.id}`) #{keeper.firstName} #{keeper.lastName}
+                  br
             .field.is-grouped
               .control
                 button.button.is-link(onclick='createAnimal()') Submit
