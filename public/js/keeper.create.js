@@ -7,16 +7,17 @@ function createKeeper() {
   const ageInput = keeperForm.querySelector('input[name=age]');
   const dateOfHireInput = keeperForm.querySelector('input[name=dateOfHire]');
   const imageUrlInput = keeperForm.querySelector('input[name=imageUrl]');
-  const dinosaurSpecialityInput = keeperForm.querySelector('input[name=dinosaurSpeciality]');
+  const specialityInput = keeperForm.querySelector('input[name=speciality]');
 
   const newKeeper = {
+    id: '',
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     gender: genderSelect.value,
     age: ageInput.value,
     dateOfHire: dateOfHireInput.value,
     imageUrl: imageUrlInput.value,
-    dinosaurSpeciality: dinosaurSpecialityInput.value
+    speciality: specialityInput.value
   }
 
   fetch('/personnel/keepers', {
