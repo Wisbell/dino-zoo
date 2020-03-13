@@ -97,34 +97,11 @@ export class SeederController {
   //   }
   // }
 
-  // @Delete('reset')
-  // async resetDatabase() {
-  //   try {
-  //     await this.seederService.resetDatabase();
-  //     return { success: "Resetting of all tables successful" }
-  //   }
-  //   catch (error) {
-  //     return { error: "Resetting of all tables failed" }
-  //   }
-  // }
-
   @Delete('reset')
   async resetDatabase() {
     try {
       await this.seederService.resetDatabase();
       return { success: "Resetting of all tables successful" }
-    }
-    catch (error) {
-      return { error: "Resetting of all tables failed" }
-    }
-  }
-
-  @Get('test')
-  async test() {
-    try {
-      // return await (await this.seederService.getAllTableNames()).toString();
-      return await this.seederService.getAllTableNames();
-      // return { success: "Resetting of all tables successful" }
     }
     catch (error) {
       return { error: "Resetting of all tables failed" }
