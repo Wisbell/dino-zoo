@@ -19,7 +19,8 @@ function createAnimal() {
     numberOfKills: numberOfKillsInput.value,
     imageUrl: imageUrlInput.value,
     category: categorySelect.value,
-    trainerId: setTrainer(trainerSelect.value)
+    trainerId: setTrainer(trainerSelect.value),
+    keeperIds: getKeeperCheckboxValues()
   }
 
   fetch('/animals', {
@@ -46,8 +47,25 @@ function createAnimal() {
 }
 
 function setTrainer(trainerValue) {
-  if (trainerValue === 'none')
+  if (!trainerValue)
     return null;
   else
     return trainerValue;
+}
+
+// Return array of strings or null
+function getKeeperCheckboxValues() {
+  const checkboxElements = document.querySelectorAll('input[id^="keeper"]');
+  const checkedBoxes = [];
+
+  checkboxElements.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkedBoxes.push(checkbox.value);
+    }
+  });
+
+  if (checkedBoxes.length > 0)
+    return checkedBoxes;
+  else
+    return null;
 }
