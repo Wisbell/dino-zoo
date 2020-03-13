@@ -17,6 +17,7 @@ $ npm install
 ```
 
 ## Running the app
+NOTE: Requires running of a postgres server.  Modify config in /config as needed. Migrations will be applied upon successful server start
 
 ```bash
 # development
@@ -42,7 +43,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Updating SASS
+## Updating SASS/CSS
 Modify _sass folder files with changes and run
 ```bash
 # single update
@@ -53,19 +54,13 @@ $ npm run sass:watch
 ```
 
 ## TODO
-- Add Personnel CRUD
-
 - Add tests for services/controllers/maybe front end as well
 
 - Refactor create/edit forms into one pug file
-
-- Add nullable type to age/numberOfkills for animal entity
-
-- Add about page with github link
 
 - Add image link validation in create/edit form
 
 - TODO: When deleting check if data exists first otherwise error will occur
 
 - TODO: Move setting up of new animal dtos functionality into dto function itself
-          See animal service
+          See animal service, ie: parseId functions

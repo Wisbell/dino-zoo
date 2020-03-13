@@ -12,19 +12,13 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   database: process.env.RDS_DB_NAME || dbConfig.database,
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
-
-  // TESTING
   migrationsTableName: 'migration',
   migrationsRun: true,
-  // migrationsRun: false,
   logging: true,
   logger: 'file',
   migrations: [`dist/migrations/**/*.{ts,js}`], // NOTE: Dist directory needed or error will be thrown
   cli: {
-    migrationsDir: 'src/migrations',
-    // migrationsDir: __dirname + '/migrations',
-    // migrationsDir: `${__dirname}/migrations`,
-    // migrationsDir: '../migrations',
+    migrationsDir: 'src/migrations'
   }
 
 };
