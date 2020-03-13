@@ -5,6 +5,8 @@ import { AnimalDto } from './animal.dto';
 import { AnimalRepository } from './animal.repository';
 import { TrainerService } from '../trainer/trainer.service';
 import { Trainer } from '../trainer/trainer.entity';
+import { Keeper } from '../keeper/keeper.entity';
+import { KeeperService } from '../keeper/keeper.service';
 
 @Injectable()
 export class AnimalService {
@@ -12,6 +14,7 @@ export class AnimalService {
     @InjectRepository(Animal)
     private readonly animalRepository: AnimalRepository,
     private readonly trainerService: TrainerService,
+    private readonly keeperService: KeeperService
   ) {}
 
   async getAll(): Promise<Animal[]> {
@@ -32,7 +35,8 @@ export class AnimalService {
           animal.numberOfKills ? animal.numberOfKills.toString() : null,
           animal.imageUrl,
           animal.category,
-          AnimalDto.parseTrainerId(animal.trainer)
+          AnimalDto.parseTrainerId(animal.trainer),
+          AnimalDto.parseKeeperIds(animal.keepers)
         )
       });
 
@@ -55,27 +59,44 @@ export class AnimalService {
           animal.numberOfKills ? animal.numberOfKills.toString() : null,
           animal.imageUrl,
           animal.category,
-          AnimalDto.parseTrainerId(animal.trainer)
-        )
+          AnimalDto.parseTrainerId(animal.trainer),
+          AnimalDto.parseKeeperIds(animal.keepers)
+        );
   }
 
   async create(newAnimal: AnimalDto): Promise<Animal> {
     let trainer: Trainer = null;
+    let keepers: Keeper[] = null;
 
     if (newAnimal.trainerId)
       trainer = await this.trainerService.getOne(newAnimal.trainerId);
 
-    return this.animalRepository.createAnimal(newAnimal, trainer);
+    if (newAnimal.keeperIds) {
+      keepers = [];
+      newAnimal.keeperIds.forEach( async (id) => {
+        keepers.push( await this.keeperService.getOne(id) );
+      });
+    }
+
+    return this.animalRepository.createAnimal(newAnimal, trainer, keepers);
   }
 
   async update(id:string, updatedAnimalDto: AnimalDto): Promise<Animal> {
     let trainer: Trainer = null;
+    let keepers: Keeper[] = null;
 
     if (updatedAnimalDto.trainerId)
       trainer = await this.trainerService.getOne(updatedAnimalDto.trainerId);
 
+    if (updatedAnimalDto.keeperIds) {
+      keepers = [];
+      updatedAnimalDto.keeperIds.forEach( async (id) => {
+        keepers.push( await this.keeperService.getOne(id) );
+      });
+    }
+
     let existingAnimal = await this.getOne(id);
-    return this.animalRepository.updateAnimal(existingAnimal, updatedAnimalDto, trainer);
+    return this.animalRepository.updateAnimal(existingAnimal, updatedAnimalDto, trainer, keepers);
   }
 
   async delete(id: string): Promise<void> {
