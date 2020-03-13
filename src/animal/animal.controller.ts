@@ -3,12 +3,14 @@ import { AnimalService } from './animal.service';
 import { AnimalDto } from './animal.dto';
 import { AnimalCategory } from './animal-category.enum';
 import { TrainerService } from '../trainer/trainer.service';
+import { KeeperService } from '../keeper/keeper.service';
 
 @Controller('animals')
 export class AnimalController {
   constructor(
     private animalService: AnimalService,
     private trainerService: TrainerService,
+    private keeperService: KeeperService
   ) {}
 
   @Get()
@@ -27,7 +29,8 @@ export class AnimalController {
     return {
       title: 'JP - Animal Management',
       animal_categories: AnimalCategory,
-      trainers: await this.trainerService.getAllDtos()
+      trainers: await this.trainerService.getAllDtos(),
+      keepers: await this.keeperService.getAllDtos()
     };
   }
 
@@ -38,7 +41,8 @@ export class AnimalController {
       title: 'JP - Animal Management',
       animal: await this.animalService.getOneDto(id),
       animal_categories: AnimalCategory,
-      trainers: await this.trainerService.getAllDtos()
+      trainers: await this.trainerService.getAllDtos(),
+      keepers: await this.keeperService.getAllDtos()
     };
   }
 
