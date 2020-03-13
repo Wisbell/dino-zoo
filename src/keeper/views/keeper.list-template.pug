@@ -1,0 +1,19 @@
+.column.is-one-third
+  .card
+    |<div class="card-image has-text-centered has-background-red">
+    |  <figure class="image is-128x128 is-inline-block">
+    |    <img src=#{keeper.imageUrl} alt="Placeholder image">
+    |  </figure>
+    |</div>
+    .card-content
+      .content
+        div Id: #{keeper.id}
+        div First Name: #{keeper.firstName}
+        div Last Name: #{keeper.lastName}
+        div Gender: #{keeper.gender}
+        div Age: #{keeper.age}
+        div Date of Hire #{keeper.dateOfHire}
+        div Speciality: #{keeper.speciality}
+    footer.card-footer
+      a.card-footer-item(href=`/personnel/keepers/edit/${keeper.id}`) Edit
+      a.card-footer-item(onclick=`deleteKeeper(${keeper.id})`) Delete

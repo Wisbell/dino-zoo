@@ -1,0 +1,18 @@
+nav.navbar(role='navigation' aria-label='main navigation')
+  .navbar-brand
+    a.navbar-item(href='/')
+      img.image.is-48x48(src='/img/Jurassic_Park_Logo_Black_Yellow_Red.png')
+    a.navbar-burger.burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+  #navbarBasicExample.navbar-menu
+    .navbar-start
+      a.navbar-item.has-text-weight-medium(href='/animals')
+        | Animals
+      a.navbar-item.has-text-weight-medium(href='/personnel')
+        | Personnel
+      a.navbar-item.has-text-weight-medium(href='/database')
+        | Database
+      a.navbar-item.has-text-weight-medium(href='/about')
+        | About

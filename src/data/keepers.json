@@ -1,0 +1,61 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Hammond",
+    "gender": "Male",
+    "age": "68",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Excentric Billionaire",
+    "imageUrl": "https://pbs.twimg.com/profile_images/533995651298643968/fmZ3aSrt.jpeg"
+  },
+
+  {
+    "firstName": "Dennis",
+    "lastName": "Nedry",
+    "gender": "Male",
+    "age": "39",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Computer Programmer",
+    "imageUrl": "http://i.imgur.com/IiH1j9K.jpg"
+  },
+
+  {
+    "firstName": "Alan",
+    "lastName": "Grant",
+    "gender": "Male",
+    "age": "41",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Paleontologist",
+    "imageUrl": "https://s-media-cache-ak0.pinimg.com/originals/bd/61/12/bd6112e4e7bce268f76809f3ac2e5eb9.png"
+  },
+
+  {
+    "firstName": "Ian",
+    "lastName": "Malcolm",
+    "gender": "Male",
+    "age": "38",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Chaos Theory",
+    "imageUrl": "https://img.buzzfeed.com/buzzfeed-static/static/2015-06/4/16/enhanced/webdr11/enhanced-10716-1433451314-11.jpg"
+  },
+
+  {
+    "firstName": "Owen",
+    "lastName": "Grady",
+    "gender": "Male",
+    "age": "28",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Velociraptor",
+    "imageUrl": "https://vignette3.wikia.nocookie.net/jurassicpark/images/2/2d/Owen.jpg/revision/latest?cb=20140920040623"
+  },
+
+  {
+    "firstName": "Ellie",
+    "lastName": "Sattler",
+    "gender": "Male",
+    "age": "23",
+    "dateOfHire": "1/1/1996",
+    "speciality": "Paleobotanist",
+    "imageUrl": "http://vignette2.wikia.nocookie.net/jurassicpark/images/7/7e/4785641918_d408b00faa.jpg/revision/latest?cb=20110802042202"
+  }
+]

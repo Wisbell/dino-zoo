@@ -1,17 +1,10 @@
 import { Controller, Get, Render } from '@nestjs/common';
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
 
   @Get()
-  @Render('index')
+  @Render('home')
   root() {
     return {
       title: 'Welcome to Jurassic Park!',
@@ -19,21 +12,21 @@ export class AppController {
     };
   }
 
-  @Get('animals')
-  @Render('index')
-  animals() {
+  @Get('database')
+  @Render('database')
+  database() {
     return {
-      title: 'JP - Animal Management',
-      hero_text: 'Animal Management'
+      title: 'Welcome to Jurassic Park!',
+      hero_text: 'Database Modification'
     };
-
   }
-  @Get('personnel')
-  @Render('index')
-  personnel() {
+
+  @Get('about')
+  @Render('about')
+  about() {
     return {
-      title: 'JP - Personnel Management',
-      hero_text: 'Employee Management '
+      title: 'Welcome to Jurassic Park!',
+      hero_text: 'About'
     };
   }
 }

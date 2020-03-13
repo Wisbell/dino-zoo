@@ -1,0 +1,65 @@
+extends ../../views/layout.pug
+
+block content
+  .section
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          form(onsubmit='event.preventDefault();')
+            .field
+              label.label.has-text-white Name
+              .control
+                input.input(type='text' name='name' placeholder='Name of Dinosaur')
+            .field
+              label.label.has-text-white Species
+              .control
+                input.input(type='text' name='species' placeholder='Species of Dinosaur')
+            .field
+              label.label.has-text-white Gender
+              .control
+                .select
+                  select#gender
+                    option(value='Male') Male
+                    option(value='Female') Female
+            .field
+              label.label.has-text-white Age
+              .control
+                input.input(type='text' name='age' placeholder='Age')
+            .field
+              label.label.has-text-white Number of Kills
+              .control
+                input.input(type='text' name='numberOfKills' placeholder='Number of Kills?')
+            .field
+              label.label.has-text-white Dinosaur Image URL
+              .control
+                input.input(type='text' name='imageUrl' placeholder='Enter valid picture URL')
+            .field
+              label.label.has-text-white Category
+              .control
+                .select
+                  select#category
+                    each value, key in animal_categories
+                      option(value=`${value}`) #{value}
+            .field
+              label.label.has-text-white Trainer
+              .control
+                .select
+                  select#trainer
+                    option(value='') Add Trainer?
+                    each trainer in trainers
+                      option(value=`${trainer.id}`) #{trainer.firstName} #{trainer.lastName}
+            .field
+              label.label.has-text-white.is-medium Keepers
+              each keeper in keepers
+                span.has-tooltip-multiline(data-tooltip=`Speciality: ${keeper.speciality}`)
+                  input.is-checkradio(id=`keeper-${keeper.id}` type='checkbox' name=`keeper-${keeper.id}` value=`${keeper.id}`)
+                  label.has-text-white(for=`keeper-${keeper.id}`) #{keeper.firstName} #{keeper.lastName}
+                  br
+            .field.is-grouped
+              .control
+                button.button.is-link(onclick='createAnimal()') Submit
+              .control
+                button.button.is-link.is-light(onclick="goTo('/animals')") Cancel
+
+block scripts
+  script(type='text/javascript' src='/js/animal.create.js')

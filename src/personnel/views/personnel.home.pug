@@ -1,0 +1,48 @@
+extends ../../views/layout.pug
+
+block content
+  .section
+    .content
+      h1.has-text-white.has-text-centered #{hero_text}
+
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          .buttons.is-centered
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/trainers/create') Add Trainer
+            a.button.is-medium.is-warning.has-text-weight-bold(href='/personnel/keepers/create') Add Keeper
+
+    .container.is-fluid
+      .columns.is-centered
+        .column
+          .tabs.is-centered.is-medium.is-toggle
+            ul
+              li#allTab.is-active(onClick="setActiveTab('allTab')")
+                a Show All Employees
+              li#keepersTab(onClick="setActiveTab('keepersTab')")
+                a Show Only Keepers
+              li#trainersTab(onClick="setActiveTab('trainersTab')")
+                a Show Only Trainers
+
+    .content#keepers
+      if personnel.keepers.length > 0
+        br
+        h1.has-text-white.has-text-centered Keepers
+        .columns.is-multiline
+          each keeper in personnel.keepers
+            include ../../keeper/views/keeper.list-template.pug
+      else
+        h3.has-text-white No Keepers
+
+    .content#trainers
+      if personnel.trainers.length > 0
+        br
+        h1.has-text-white.has-text-centered Trainers
+        .columns.is-multiline
+          each trainer in personnel.trainers
+            include ../../trainer/views/trainer.list-template.pug
+      else
+        h3.has-text-white No Trainers
+
+block scripts
+  script(type='text/javascript' src='/js/personnel.home.js')

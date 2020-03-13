@@ -1,0 +1,45 @@
+[
+  {
+    "firstName": "Augy",
+    "lastName": "Wheatland",
+    "age": "25",
+    "category_id": "3",
+    "gender": "Male",
+    "imageUrl": "http://dummyimage.com/173x226.jpg/dddddd/000000",
+    "dateOfHire": "1/10/2017",
+    "trickExpertise": "Jumps"
+  },
+
+  {
+    "firstName": "Kristyn",
+    "lastName": "Yurevich",
+    "age": "23",
+    "category_id": "1",
+    "gender": "Female",
+    "imageUrl": "http://dummyimage.com/236x214.jpg/5fa2dd/ffffff",
+    "dateOfHire": "3/31/2017",
+    "trickExpertise": "Roars"
+  },
+
+  {
+    "firstName": "Crichton",
+    "lastName": "Esmonde",
+    "age": "54",
+    "category_id": "4",
+    "gender": "Male",
+    "imageUrl": "http://dummyimage.com/124x229.jpg/5fa2dd/ffffff",
+    "dateOfHire": "1/27/2017",
+    "trickExpertise": "Jumps"
+  },
+
+  {
+    "firstName": "Odey",
+    "lastName": "Chipps",
+    "age": "32",
+    "category_id": "1",
+    "gender": "Male",
+    "imageUrl": "http://dummyimage.com/114x204.jpg/ff4444/ffffff",
+    "dateOfHire": "10/16/2016",
+    "trickExpertise": "Rolling Over"
+  }
+]

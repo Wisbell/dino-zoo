@@ -1,0 +1,66 @@
+extends ../../views/layout.pug
+
+block content
+  .section
+    .container.is-fluid
+      .columns.is-centered
+        .column.is-half
+          form(onsubmit='event.preventDefault();')
+            .field
+              label.label.has-text-white Id
+              .control
+                input.input(type='text' name='id' placeholder='Id #' value=`${trainer.id}` disabled)
+            .field
+              label.label.has-text-white First Name
+              .control
+                input.input(type='text' name='firstName' placeholder='First Name' value=`${trainer.firstName}`)
+            .field
+              label.label.has-text-white Last Name
+              .control
+                input.input(type='text' name='lastName' placeholder='Last Name' value=`${trainer.lastName}`)
+            .field
+              label.label.has-text-white Gender
+              .control
+                .select
+                  select(id='gender')
+                    if (trainer.gender === 'Male')
+                      option(value='Male' selected) Male
+                    else
+                      option(value='Male') Male
+                    if (trainer.gender === 'Female')
+                      option(value='Female' selected) Female
+                    else
+                      option(value='Female') Female
+            .field
+              label.label.has-text-white Age
+              .control
+                if (trainer.age)
+                  input.input(type='text' name='age' placeholder='Age' value=`${trainer.age}`)
+                else
+                  input.input(type='text' name='age' placeholder='Age')
+            .field
+              label.label.has-text-white Date of Hire
+              .control
+                if (trainer.age)
+                  input.input(type='text' name='dateOfHire' placeholder='Input Date of Hire' value=`${trainer.dateOfHire}`)
+                else
+                  input.input(type='text' name='dateOfHire' placeholder='Input Date of Hire')
+            .field
+              label.label.has-text-white Trick Expertise
+              .control
+                if (trainer.numberOfKills)
+                  input.input(type='text' name='trickExpertise' placeholder='Enter Trick Expertise' value=`${trainer.trickExpertise}`)
+                else
+                  input.input(type='text' name='trickExpertise' placeholder='Enter Trick Expertise' value='')
+            .field
+              label.label.has-text-white Personnel Image URL
+              .control
+                input.input(type='text' name='imageUrl' placeholder='Enter valid picture URL' value=`${trainer.imageUrl}`)
+            .field.is-grouped
+              .control
+                button.button.is-link(onclick='updateTrainer()') Submit
+              .control
+                button.button.is-link.is-light(onclick="goTo('/personnel')") Cancel
+
+block scripts
+  script(type='text/javascript' src='/js/trainer.edit.js')
