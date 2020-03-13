@@ -17,7 +17,7 @@ $ npm install
 ```
 
 ## Running the app
-NOTE: Requires running of a postgres server.  Modify config in /config as needed.
+NOTE: Requires running of a postgres server.  Modify config in /config as needed. Migrations will be applied upon successful server start
 
 ```bash
 # development
