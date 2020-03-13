@@ -10,6 +10,9 @@ Built with
 * Bulma (CSS Framework) - https://bulma.io/
 * Postgres (SQL DB) - https://www.postgresql.org/
 
+[Live on Heroku](https://dino-zoo.herokuapp.com/)
+NOTE: Might take 5 - 10 seconds to load if server is idle.
+
 ## Setup
 
 ```bash
