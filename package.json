@@ -34,7 +34,7 @@
     "@nestjs/platform-express": "^6.10.14",
     "@nestjs/typeorm": "^6.3.3",
     "animate.css": "^3.7.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bulma": "^0.8.0",
     "bulma-checkradio": "^1.1.1",
     "bulma-slider": "^2.0.0",
