@@ -21,6 +21,11 @@ const typeOrmConfig: TypeOrmModuleOptions = {
     migrationsDir: 'src/migrations'
   },
   ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
 };
 
 // NOTE: typeOrmConfig must be exported like this in order to use typeorm scripts in package.json
