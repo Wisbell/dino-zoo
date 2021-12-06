@@ -19,8 +19,8 @@ const typeOrmConfig: TypeOrmModuleOptions = {
   migrations: [`dist/migrations/**/*.{ts,js}`], // NOTE: Dist directory needed or error will be thrown
   cli: {
     migrationsDir: 'src/migrations'
-  }
-
+  },
+  ssl: true,
 };
 
 // NOTE: typeOrmConfig must be exported like this in order to use typeorm scripts in package.json
